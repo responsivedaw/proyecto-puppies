@@ -10,3 +10,6 @@
 	- Si cuando le demos a buscar obtenemos 0 resultados mostramos con jQuery popup-animado con no hay resultados. Si hay 1 resultado mostramos los datos directamente en el formulario. Si hay varios resultados mostramos con jQuery popup-animado con los resultados con la opcion de seleccionar uno y redireccionamos pasando por GET su id.
 	- El campo 'id' debe estar 'disabled-readonly' salvo en el caso de BUSCAR ya que es el unico momento en que se puede introducir dicho dato a mano.
 + 
+
+
+asdadassdasda 21.55
