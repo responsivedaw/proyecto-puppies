@@ -1,0 +1,12 @@
+**************
+* 20-04-2014 *
+**************
++ Se separa el header como header.php para incluirlo en aquellas paginas que sea necesario.
++ Pantalla Clientes: Elimino la letra del NIF como elemento separado para evitar problemas con el constructor de la clase Cliente.
++ "clientes.php":
+	- Si hay POST --> Instanciamos, validamos, insertamos, volvemos a clientes.php?id_cliente=ultimoid.
+	- No hay POST pero tenemos GET --> recuperamos objeto de la DB y lo mostramos en el formulario.
+	- No hay POST y no hay GET --> mostramos formulario vacio.
+	- Si cuando le demos a buscar obtenemos 0 resultados mostramos con jQuery popup-animado con no hay resultados. Si hay 1 resultado mostramos los datos directamente en el formulario. Si hay varios resultados mostramos con jQuery popup-animado con los resultados con la opcion de seleccionar uno y redireccionamos pasando por GET su id.
+	- El campo 'id' debe estar 'disabled-readonly' salvo en el caso de BUSCAR ya que es el unico momento en que se puede introducir dicho dato a mano.
++ 
