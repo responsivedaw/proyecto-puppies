@@ -33,7 +33,7 @@
                     <label for="sexo_cliente" class="col-md-3">SEXO: </label>
                     <input type="radio" name="sexo_cliente" id="sexo_mujer" class="col-md-1" value='f' <?php echo (isset($cliente['sexo_cliente']) && $cliente['sexo_cliente']=='f')?'checked':''; ?> />
                     <label for="sexo_mujer" class="col-md-3"> Mujer </label>
-                    <input type="radio" name="sexo_cliente" id="sexo_hombre" class="col-md-1" value='h' <?php echo (isset($cliente['sexo_cliente']) && $cliente['sexo_cliente']=='m')?'checked':''; ?> /><label for="sexo_hombre" class="col-md-4"> Hombre</label>
+                    <input type="radio" name="sexo_cliente" id="sexo_hombre" class="col-md-1" value='m' <?php echo (isset($cliente['sexo_cliente']) && $cliente['sexo_cliente']=='m')?'checked':''; ?> /><label for="sexo_hombre" class="col-md-4"> Hombre</label>
                 </div>
             </div>
             <hr/>
@@ -46,7 +46,7 @@
             <div class="form-group">
                 <div class="col-md-6">
                     <label for="cpostal_cliente" class="col-md-4">Localidad: </label>
-                    <input type="text" name="cpostal_cliente" id="cpostal_cliente" class="col-md-8" <?php echo (isset($cliente['cpostal_cliente']))?'value="'.$cliente['cpostal_cliente'].' - LOCALIDAD-SQL"':''; ?> />
+                    <input type="text" name="cpostal_cliente" id="cpostal_cliente" class="col-md-8" <?php echo (isset($cliente['cpostal_cliente']))?'value="'.$cliente['cpostal_cliente'].'"':''; ?> />
                 </div>
                 <div class="col-md-6">
                     <label for="provincia_cliente" class="col-md-3">Provincia: </label>
@@ -100,7 +100,7 @@
                         <td>radioBTN</td>
                     </tr>
                 </table>
-                <a href="#" style="float:right; vertical-align:middle;">IR A FICHA</a>
+                <a href="#" class="btn btn-info btn-xs"><i class="fa fa-paw"></i> IR A FICHA</a>
                 </div><div class="float-reset"></div>
             </div><hr/>
             <div class="form-group">
