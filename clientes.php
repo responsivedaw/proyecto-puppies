@@ -30,11 +30,13 @@
                         include "./plantillas/clientes_form_cliente.php";
                     } elseif (isset($_GET['borrar'])){
                         //var_dump($_GET);
+                        // Recuperamos datos antes de eliminarlo para visualizarlo.
+                        $resultados=Cliente::buscar($_GET['id_cliente']);
+                        //var_dump($resultados);
+                        $ult_cliente=$_GET['id_cliente'];
+                        $datos=$resultados[0];
                         //Borramos cliente
                         Cliente::borrar($_GET['id_cliente']);
-                        //Mostramos datos del cliente -> solo tenemos id.
-                        $resultados=Cliente::buscar($_GET['id_cliente']);
-                        $datos=$resultados[0];
                         include "./plantillas/clientes_ficha_cliente.php";
                     } else {
                         include "./plantillas/clientes_form_cliente.php";
@@ -42,6 +44,7 @@
                 } elseif (isset($_POST['alta'])){
                     // Instanciamos cliente con los datos recibidos del POST
                     $cliente=new Cliente($_POST);
+                    //var_dump($cliente);
                     if ($cliente->validar()){
                         $ult_cliente=$cliente->insertar();
                         // Recibimos las propiedades del objeto en una array asociativo.
@@ -67,19 +70,19 @@
                         include "./plantillas/clientes_listado_clientes.php";
                     }
                 } elseif (isset($_POST['modificar'])){
-                    //var_dump($_POST);
+                    var_dump($_POST);
                     $cliente=new Cliente($_POST);
-                    //var_dump($cliente);
+                    echo "<hr/>";
+                    var_dump($cliente);
                     if ($cliente->validar()){
-                        echo 'validado';
+                        //echo 'validado';
                         $ult_cliente=$cliente->modificar();
                         $datos=$_POST;
                         include "./plantillas/clientes_ficha_cliente.php";
                     } else {
-                        echo 'no validado';
+                        //echo 'no validado';
                         include "./plantillas/clientes_error_validacion.php";
                     }                    
-                    
                 }
             } else {
                 ?>

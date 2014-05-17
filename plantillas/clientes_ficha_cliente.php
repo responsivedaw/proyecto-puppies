@@ -1,7 +1,15 @@
 <div class="container">
     <div class="ficha-cliente">
 	<h2>
-        <?php echo (isset($_POST['alta']))?'CLIENTE CREADO CORRECTAMENTE':'CLIENTE ACTUALIZADO CORRECTAMENTE'; ?>
+        <?php 
+            if (isset($_POST['alta'])){
+                echo 'CLIENTE CREADO CORRECTAMENTE';
+            } elseif (isset($_POST['modificar'])){
+                echo 'CLIENTE ACTUALIZADO CORRECTAMENTE';
+            } else {
+                echo 'CLIENTE ELIMINADO CORRECTAMENTE';
+            }      
+        ?>
     </h2>
 	<table class="table table-striped">
 		<tr>

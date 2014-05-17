@@ -29,6 +29,7 @@ class Cliente{
         $this->nombre_cliente=($data['nombre_cliente']!="")?$data['nombre_cliente']:null;
         $this->apellidos_cliente=($data['apellidos_cliente']!="")?$data['apellidos_cliente']:null;
         $this->fnac_cliente=($data['fnac_cliente']!="")?$data['fnac_cliente']:null;
+        date_default_timezone_set('Europe/Madrid');    //Fijamos zona horaria
         $this->falta_cliente=($data['falta_cliente']!="")?$data['falta_cliente']:date('d/m/Y');
         $this->sexo_cliente=(isset($data['sexo_cliente']))?$data['sexo_cliente']:null;
         $this->direccion_cliente=($data['direccion_cliente']!="")?$data['direccion_cliente']:null;
@@ -55,13 +56,14 @@ class Cliente{
         if ($this->email_cliente!=""){
             $validaciones['email_cliente']=validar_email($this->email_cliente);
         }
-        $validaciones['sexo_cliente']=($this->sexo_cliente=="h" || $this->sexo_cliente=="m")?true:false;
+        $validaciones['sexo_cliente']=($this->sexo_cliente=="f" || $this->sexo_cliente=="m")?true:false;
         if ($this->direccion_cliente!=""){
             $validaciones['direccion_cliente']=validar_direccion($this->direccion_cliente);
             $validaciones['cpostal_cliente']=validar_cpostal($this->cpostal_cliente);
         }
         foreach ($validaciones as $value){
             if ($value==false){
+                //var_dump($validaciones);
                 return false;
             }
         }
@@ -85,7 +87,7 @@ class Cliente{
         return $ultimo;
     }
     public function modificar(){
-        echo 'modificamos';
+        //echo 'modificamos';
         //Previamente construimos un objeto cliente con los datos del formulario.
         //Si los datos son válidos, llamamos a este método.
         $query="UPDATE clientes SET";
@@ -104,7 +106,7 @@ class Cliente{
         $query.=" ,notas_cliente='".$this->notas_cliente."'";
         $query.=" ,id_usuario=".$_SESSION['id_usuario'];
         $query.=" WHERE id_cliente=".$this->id_cliente.";";
-        var_dump($query);
+        //var_dump($query);
         $conn=conexion_puppiesdb();
         $result=mysqli_query($conn,$query) or die ("Error en la actualizacion: ".mysqli_error($conn));
         mysqli_close($conn);

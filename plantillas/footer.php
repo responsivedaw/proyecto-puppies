@@ -12,7 +12,7 @@
 			</form>
 		</div>
 		<div class="fecha">
-			<p><?php echo (date("d-m-Y")); ?></p>
+			<p><?php  date_default_timezone_set('Europe/Madrid');echo (date("d-m-Y")); ?></p>
 		</div>
 		<div class="float-reset"></div>
 	</div>

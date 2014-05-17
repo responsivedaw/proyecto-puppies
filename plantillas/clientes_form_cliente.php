@@ -105,7 +105,7 @@
             </div><hr/>
             <div class="form-group">
                 <p>Observaciones:</p>
-                <textarea cols="110" rows="5" name="notas_cliente"></textarea>
+                <textarea cols="110" rows="5" name="notas_cliente"><?php echo (isset($cliente['notas_cliente']))?$cliente['notas_cliente']:''; ?></textarea>
             </div><hr/>
             <div class="form-group">
                 <?php if (isset($_GET['visualizar'])): ?>

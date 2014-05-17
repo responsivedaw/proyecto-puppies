@@ -1,5 +1,4 @@
 <?php
-
     function validar_email($email){
         $patron_email="/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/";
         return preg_match($patron_email,$email);
@@ -44,5 +43,4 @@
         $patron_cpostal="/^[01234]\d{4}$/";
         return preg_match($patron_cpostal,$cpostal);
     }
-    
 ?>
