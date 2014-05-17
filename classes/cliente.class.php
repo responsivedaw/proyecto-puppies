@@ -85,6 +85,7 @@ class Cliente{
         return $ultimo;
     }
     public function modificar(){
+        echo 'modificamos';
         //Previamente construimos un objeto cliente con los datos del formulario.
         //Si los datos son válidos, llamamos a este método.
         $query="UPDATE clientes SET";
@@ -94,7 +95,7 @@ class Cliente{
         $query.=" ,fnac_cliente='".formatear_fecha($this->fnac_cliente)."'";
         $query.=" ,falta_cliente='".formatear_fecha($this->falta_cliente)."'";
         $query.=" ,direccion_cliente='".$this->direccion_cliente."'";
-        $query.=" ,localidad_cliente='".$this->cpostal_cliente."'";
+        $query.=" ,cpostal_cliente='".$this->cpostal_cliente."'";
         $query.=" ,sexo_cliente='".$this->sexo_cliente."'";
         $query.=" ,tfno1_cliente='".$this->tfno1_cliente."'";
         $query.=" ,tfno2_cliente='".$this->tfno2_cliente."'";
@@ -113,6 +114,7 @@ class Cliente{
         // Version DELETE
         // $query="DELETE FROM clientes WHERE id_cliente=$id_cliente;";
         // Version pasamos a inactivo.
+        // Actualizamos tambien el id_usuario que realiza la modificacion para el tema de los triggers.
         $query="UPDATE clientes SET activo_cliente=0,id_usuario={$_SESSION['id_usuario']} WHERE id_cliente=$id_cliente;";
         $conn=conexion_puppiesdb();
         $result=mysqli_query($conn,$query) or die ("Error en INACTIVO: ".mysqli_error($conn));
@@ -162,7 +164,7 @@ class Cliente{
                 $query.=" AND email_cliente='{$datos['email_cliente']}'";
             }
         }       
-        $query.=";";
+        $query.=" AND activo_cliente=1;";
         $conn=conexion_puppiesdb();
         $result=mysqli_query($conn,$query) or die ("Error en consulta: ".mysqli_error($conn));
         $resultados=array();    //Aqui iremos añadiendo cada una de las filas de la consulta.

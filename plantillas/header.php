@@ -1,5 +1,6 @@
 <header>
-    <nav >
+    <div class="container">
+    <nav>
         <ul id="home-buttons">
             <li><a href="./home.php"><img src="images/inicio100.png" alt="INICIO" title="INICIO" width="40"></a></li>
             <li><a href="./config.php"><img src="images/config100.png" alt="configuracion" title="CONFIGURACION" width="40"></a></li>
@@ -16,5 +17,7 @@
             <li><?php echo (isset($_SESSION['nombre_usuario']))? ($_SESSION['nombre_usuario']):("Nombre Apellido") ?></li>
             <li><a href="./logout.php"><img src="images/salir100.png" alt="salir" title="SALIR" width="40"></a></li>
         </ul>
-    </nav><div class="float-reset"></div>
+    </nav>
+    <div class="float-reset"></div>
+    </div>        
 </header>

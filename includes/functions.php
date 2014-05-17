@@ -1,6 +1,6 @@
 <?php
 	function __autoload($classname) {
-		$filename = "./classes/". $classname .".class.php";
+		$filename = "./classes/". strtolower($classname) .".class.php";
 		include_once($filename);
 	}
 	function formatear_fecha($fecha){

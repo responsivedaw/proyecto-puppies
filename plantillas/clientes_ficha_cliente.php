@@ -1,16 +1,14 @@
-<?php
-	// Recibimos las propiedades del objeto en una array asociativo.
-	$datos=$cliente->to_array();
-	//var_dump($datos);
-?>
-<div class="cliente-nuevo">
-	<h2>CLIENTE INSERTADO CORRECTAMENTE</h2>
+<div class="container">
+    <div class="ficha-cliente">
+	<h2>
+        <?php echo (isset($_POST['alta']))?'CLIENTE CREADO CORRECTAMENTE':'CLIENTE ACTUALIZADO CORRECTAMENTE'; ?>
+    </h2>
 	<table class="table table-striped">
 		<tr>
 			<th>Código:</th>
 		</tr>
 		<tr>
-			<td><?php echo $insertado; ?></td>
+			<td><?php echo $ult_cliente; ?></td>
 		</tr>
 		<tr>
 			<th>Nombre</th>
@@ -42,7 +40,7 @@
 			<td><?php echo $datos['tfno1_cliente']; ?></td>
 			<td><?php echo $datos['tfno2_cliente']; ?></td>
 			<td><?php echo $datos['email_cliente']; ?></td>
-			<td><?php echo ($datos['mailing_cliente'])?'SI':'NO'; ?></td>
+			<td><?php echo (isset($datos['mailing_cliente']))?'SI':'NO'; ?></td>
 		</tr>
 		<tr>
 			<th colspan="4">
@@ -56,4 +54,5 @@
 		</tr>
 	</table>
 	<p class="center-block"><a href="./clientes.php" title="VOLVER" class="btn btn-primary"><i class="fa fa-undo fa-lg"></i> VOLVER</a></p>
+</div>
 </div>
