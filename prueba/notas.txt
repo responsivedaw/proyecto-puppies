@@ -11,11 +11,7 @@
 	- El campo 'id' debe estar 'disabled-readonly' salvo en el caso de BUSCAR ya que es el unico momento en que se puede introducir dicho dato a mano.
 + 
 
-
-asdadassdasda 21.55
-
-github 22.03
-
-local 22.11
-
-desde codio 22.16
+****************
+PATH CONFIG PHPMYADMIN
+codio@lobose-gamene:~/.parts/packages/phpmyadmin/4.1.7/phpmyadmin$ 
+********************************************
