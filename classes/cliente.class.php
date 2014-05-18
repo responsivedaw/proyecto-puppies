@@ -32,13 +32,13 @@ class Cliente{
         date_default_timezone_set('Europe/Madrid');    //Fijamos zona horaria
         $this->falta_cliente=($data['falta_cliente']!="")?$data['falta_cliente']:date('d/m/Y');
         $this->sexo_cliente=(isset($data['sexo_cliente']))?$data['sexo_cliente']:null;
-        $this->direccion_cliente=($data['direccion_cliente']!="")?$data['direccion_cliente']:null;
+        $this->direccion_cliente=($data['direccion_cliente']!="")?htmlentities($data['direccion_cliente']):null;
         $this->cpostal_cliente=($data['cpostal_cliente']!="")?$data['cpostal_cliente']:null;
         $this->tfno1_cliente=($data['tfno1_cliente']!="")?$data['tfno1_cliente']:null;
         $this->tfno2_cliente=($data['tfno2_cliente']!="")?$data['tfno2_cliente']:null;
         $this->email_cliente=($data['email_cliente']!="")?$data['email_cliente']:null;
         $this->mailing_cliente=(isset($data['mailing_cliente']))?$data['mailing_cliente']:0;
-        $this->notas_cliente=($data['notas_cliente']!="")?$data['notas_cliente']:null;
+        $this->notas_cliente=($data['notas_cliente']!="")?htmlentities($data['notas_cliente']):null;
         $this->activo_cliente=(isset($data['activo_cliente']))?$data['activo_cliente']:1;
         $this->id_usuario=(isset($data['id_usuario']))?$data['id_usuario']:$_SESSION['id_usuario'];
         //Si viene del formulario no existe y lo cogemos de la variable de sesion pero si viene de la DB si tiene valor.
@@ -70,15 +70,15 @@ class Cliente{
         return true;
     }
     public function insertar(){
+        $conn=conexion_puppiesdb();
         $query="INSERT INTO clientes VALUES (";
         $query.="null,'$this->nif_cliente','$this->nombre_cliente','$this->apellidos_cliente',";
         $query.="'".formatear_fecha($this->fnac_cliente)."',";
         $query.="'".formatear_fecha($this->falta_cliente)."',";
-        $query.="'$this->sexo_cliente','$this->direccion_cliente','$this->cpostal_cliente','$this->tfno1_cliente','$this->tfno2_cliente',";
-        $query.="'$this->email_cliente',$this->mailing_cliente,'$this->notas_cliente',$this->activo_cliente,$this->id_usuario";
+        $query.="'$this->sexo_cliente','".$this->direccion_cliente."','$this->cpostal_cliente','$this->tfno1_cliente','$this->tfno2_cliente',";
+        $query.="'$this->email_cliente',$this->mailing_cliente,'".$this->notas_cliente."',$this->activo_cliente,$this->id_usuario";
         $query.=");";
         echo $query;
-        $conn=conexion_puppiesdb();
         $result=mysqli_query($conn,$query) or die ("Error Insercion: "+mysqli_error($conn));
         $ultimo=mysqli_insert_id($conn);
         // Recuperamos el valor ID de la ultima insercion
@@ -90,6 +90,7 @@ class Cliente{
         //echo 'modificamos';
         //Previamente construimos un objeto cliente con los datos del formulario.
         //Si los datos son válidos, llamamos a este método.
+        $conn=conexion_puppiesdb();
         $query="UPDATE clientes SET";
         $query.=" nombre_cliente='".$this->nombre_cliente."'";
         $query.=" ,apellidos_cliente='".$this->apellidos_cliente."'";
@@ -106,8 +107,7 @@ class Cliente{
         $query.=" ,notas_cliente='".$this->notas_cliente."'";
         $query.=" ,id_usuario=".$_SESSION['id_usuario'];
         $query.=" WHERE id_cliente=".$this->id_cliente.";";
-        //var_dump($query);
-        $conn=conexion_puppiesdb();
+        var_dump($query);
         $result=mysqli_query($conn,$query) or die ("Error en la actualizacion: ".mysqli_error($conn));
         mysqli_close($conn);
         return $this->id_cliente;   //Lo devolvemos para cargar de nuevo el formulario con los datos actualizados.
