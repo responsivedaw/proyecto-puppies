@@ -23,7 +23,19 @@
         } else {
             return false;
         }
-        
+    }
+
+    function get_localidades(){
+        // Nos devuleve un array con todas las localidades
+        $conn=conexion_puppiesdb();
+        $query="SELECT * FROM localidades ORDER BY nombre_localidad ASC;";
+        $result=mysqli_query($conn,$query) or die ("Error en recuperacion de localidades:".mysqli_error($conn));
+        $localidades=array();
+        while ($localidad=mysqli_fetch_assoc($result)){
+            $localidades[]=$localidad;
+        }
+        mysqli_close($conn);
+        return $localidades;
     }
 
 ?>

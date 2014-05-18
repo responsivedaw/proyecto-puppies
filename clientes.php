@@ -13,6 +13,7 @@
     <script type="text/javascript" src="./js/footer.js"></script>
     <!--PHP-->
     <?php require_once "./includes/functions.php"; ?>
+    <?php require_once "./includes/database_functions.php"; ?>
     <?php ?>
     <?php session_start(); ?>
     <?php $_SESSION['id_usuario']=2; ?>
