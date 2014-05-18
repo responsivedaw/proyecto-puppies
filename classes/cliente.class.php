@@ -107,7 +107,7 @@ class Cliente{
         $query.=" ,notas_cliente='".$this->notas_cliente."'";
         $query.=" ,id_usuario=".$_SESSION['id_usuario'];
         $query.=" WHERE id_cliente=".$this->id_cliente.";";
-        var_dump($query);
+        //var_dump($query);
         $result=mysqli_query($conn,$query) or die ("Error en la actualizacion: ".mysqli_error($conn));
         mysqli_close($conn);
         return $this->id_cliente;   //Lo devolvemos para cargar de nuevo el formulario con los datos actualizados.
@@ -148,6 +148,12 @@ class Cliente{
             }
             if (validar_fecha($datos['falta_cliente'])){
                 $query.=" AND falta_cliente='".formatear_fecha($datos['falta_cliente'])."'";
+            }
+            if (isset($datos['sexo_cliente'])){
+                $query.=" AND sexo_cliente='{$datos['sexo_cliente']}'";
+            }
+            if (isset($datos['mailing_cliente'])){
+                $query.=" AND mailing_cliente='{$datos['mailing_cliente']}'";
             }
             if ($datos['direccion_cliente']!=""){
                 $query.=" AND direccion_cliente LIKE '%{$datos['direccion_cliente']}%'";

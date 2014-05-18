@@ -14,7 +14,6 @@
     <!--PHP-->
     <?php require_once "./includes/functions.php"; ?>
     <?php require_once "./includes/database_functions.php"; ?>
-    <?php ?>
     <?php session_start(); ?>
     <?php $_SESSION['id_usuario']=2; ?>
 </head>
@@ -81,7 +80,6 @@
                         } elseif (isset($_POST['modificar'])){
                             //var_dump($_POST);
                             $cliente=new Cliente($_POST);
-                            echo "<hr/>";
                             //var_dump($cliente);
                             if ($cliente->validar()){
                                 //echo 'validado';
@@ -94,17 +92,13 @@
                             }                    
                         }
                     } else {
-                        ?>
-                        <div class="mensaje-error">
-                            <p>DEBE INICIAR SESIÓN PARA ACCEDER A LA APLICACIÓN.</p>
-                            <a href="index.php" title="Ir a INICIO" class="btn btn-info">INICIAR<br/>SESIÓN</a>
-                        </div>
-                        <?php
+                        include "./plantillas/clientes_error_sesion.php";
                     }
                 ?>
                 </div><!-- clientes-content -->
             </div><!-- row -->
         </div><!-- container -->
+        <div class="clearfix"></div>
     </div><!-- main-content -->
     <?php require_once "./plantillas/footer.php"; ?>
 </body>

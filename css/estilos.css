@@ -102,7 +102,7 @@ input[readonly]{
 div.form-clientes{
     /*margin-bottom: 100px;*/
     padding: 15px;
-    border:2px solid #000000;
+    /*border:2px solid #000000;*/
     border-radius: 6px;
     box-shadow: 0px 0px 6px #262626;
     background: url('../images/fondo-formularios-semi.jpg');
@@ -110,8 +110,21 @@ div.form-clientes{
 div.form-clientes form{
     font-size: 12px;
 }
-table#mascotas-cliente{
+div.form-clientes form textarea{
+    resize: none;
+}
+div#mascotas-cliente{
+    height: 150px;
+    overflow: auto;
+    margin-bottom: 10px;
+}
+div#mascotas-cliente table{
     background-color: #f9f9f9;
+    vertical-align: middle;
+    border-radius: 4px;
+}
+div#mascotas-cliente table tr td a{
+    padding: 4px 8px;
 }
 div.img-form{
     margin-bottom: 30px;

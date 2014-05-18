@@ -67,11 +67,12 @@
                 <?php
                 $localidades=get_localidades();
                 //var_dump($localidades);
+                $provincia=null;
                 foreach ($localidades as $localidad){
                     $option="<option value='{$localidad['cpostal_localidad']}'";
                     if (isset($cliente[cpostal_cliente])&&($cliente['cpostal_cliente']==$localidad['cpostal_localidad'])){
                         $option.=' selected="selected"';
-                        $provincia=$localidad['provincia'];
+                        $provincia=$localidad['provincia_localidad'];
                     }
                     $option.=">{$localidad['cpostal_localidad']} - {$localidad['nombre_localidad']}</option>";
                     echo $option;
@@ -81,7 +82,7 @@
         </div>
         <div class="form-group col-md-2 col-xs-6">
             <label for="provincia_cliente">PROVINCIA:</label>
-            <input type="text" name="provincia_cliente" id="provincia_cliente" class="form-control" readonly="readonly" <?php echo (isset($provincia))?'value="{$provincia}"':''; ?> />
+            <input type="text" name="provincia_cliente" id="provincia_cliente" class="form-control" readonly="readonly" <?php echo (isset($provincia))?'value="'.$provincia.'"':''; ?> />
         </div>
     </div>
     <div class="row">
@@ -103,7 +104,7 @@
                 <div class="col-md-4 col-xs-4">
                     <div class="input-group">
                         <span class="input-group-addon">
-                            <input type="radio" id="mailing_cliente_1" value="1" name="mailing_cliente">
+                            <input type="radio" id="mailing_cliente_1" value="1" name="mailing_cliente" checked="checked" />
                         </span>
                         <div class="form-control">
                             <label for="mailing_cliente_1">SÍ</label>
@@ -113,7 +114,7 @@
                 <div class="col-md-4 col-xs-4 col-md-offset-1 col-xs-offset-1">
                     <div class="input-group">
                         <span class="input-group-addon">
-                            <input type="radio" id="mailing_cliente_0" value="0" checked="checked" name="mailing_cliente">
+                            <input type="radio" id="mailing_cliente_0" value="0" name="mailing_cliente" <?php echo (isset($cliente['mailing_cliente']) && $cliente['mailing_cliente']==0)?'checked="checked"':''; ?> />
                         </span>
                         <div class="form-control">
                             <label for="mailing_cliente_0">NO</label>
@@ -124,52 +125,66 @@
         </div>
     </div>
     <div class="line-break"></div>
-    <div class="row">
-        <p><i class="fa fa-paw fa-lg"></i> <strong>MASCOTAS</strong> <i class="fa fa-paw fa-lg"></i></p>
-        <table class="table table-condensed col-md-10" id="mascotas-cliente">
-            <tr>
-                <th class="col-md-1 col-md-offset-1">#ID</th>
-                <th class="col-md-2">#CHIP</th>
-                <th class="col-md-1">NOMBRE</th>
-                <th class="col-md-1">RAZA</th>
-                <th class="col-md-1">SEXO</th>
-                <th class="col-md-1">IR A FICHA</th>
-            </tr>
-            <tr>
-                <td>44</td>
-                <td>1235268265</td>
-                <td>Maeeeeeeeeeeya</td>
-                <td>Canieeeeeeeeeche</td>
-                <td>Hemeeeeeeeeebra</td>
-                <td><a href="" title="IR A FICHA" class="btn btn-success"><i class="fa fa-eye"></i></a></td>
-            </tr>
-            <tr>
-                <td>166</td>
-                <td>1235268265</td>
-                <td>Maya</td>
-                <td>Caniche</td>
-                <td>Hembra</td>
-                <td><a href="" title="IR A FICHA" class="btn btn-success"><i class="fa fa-eye"></i></a></td>
-            </tr>
-            <tr>
-                <td>900</td>
-                <td>1235268265</td>
-                <td>Maya</td>
-                <td>Caniche</td>
-                <td>Hembra</td>
-                <td><a href="" title="IR A FICHA" class="btn btn-success"><i class="fa fa-eye"></i></a></td>
-            </tr>
-            <tr>
-                <td>4155</td>
-                <td>1235268265</td>
-                <td>Maya</td>
-                <td>Caniche</td>
-                <td>Hembra</td>
-                <td><a href="" title="IR A FICHA" class="btn btn-success"><i class="fa fa-eye"></i></a></td>
-            </tr>
-        </table>
+    <p><i class="fa fa-paw fa-lg"></i> <strong>MASCOTAS</strong> <i class="fa fa-paw fa-lg"></i></p>
+    <div id="mascotas-cliente">
+    <table class="table table-condensed col-md-10">
+        <tr>
+            <th class="col-md-1">#ID</th>
+            <th class="col-md-2">#CHIP</th>
+            <th class="col-md-1">NOMBRE</th>
+            <th class="col-md-1">RAZA</th>
+            <th class="col-md-1">SEXO</th>
+            <th class="col-md-1">VER FICHA</th>
+        </tr>
+        <tr>
+            <td>44</td>
+            <td>1235268265</td>
+            <td>Maeeeeeeeeeeya</td>
+            <td>Canieeeeeeeeeche</td>
+            <td>Hemeeeeeeeeebra</td>
+            <td><a href="" title="IR A FICHA" class="btn btn-success"><i class="fa fa-eye"></i></a></td>
+        </tr>
+        <tr>
+            <td>900</td>
+            <td>1235268265</td>
+            <td>Maya</td>
+            <td>Caniche</td>
+            <td>Hembra</td>
+            <td><a href="" title="IR A FICHA" class="btn btn-success"><i class="fa fa-eye"></i></a></td>
+        </tr>
+        <tr>
+            <td>4155</td>
+            <td>1235268265</td>
+            <td>Maya</td>
+            <td>Caniche</td>
+            <td>Hembra</td>
+            <td><a href="" title="IR A FICHA" class="btn btn-success"><i class="fa fa-eye"></i></a></td>
+        </tr>
+        <tr>
+            <td>4155</td>
+            <td>1235268265</td>
+            <td>Maya</td>
+            <td>Caniche</td>
+            <td>Hembra</td>
+            <td><a href="" title="IR A FICHA" class="btn btn-success"><i class="fa fa-eye"></i></a></td>
+        </tr>
+    </table>
     </div>
     <div class="line-break"></div>
+    <div class="form-group">
+        <label for="notas_cliente">OBSERVACIONES</label>
+        <textarea name="notas_cliente" class="form-control" placeholder="Introduzca observaciones ..." rows="5"><?php echo (isset($cliente['notas_cliente']))?$cliente['notas_cliente']:''; ?></textarea>
+    </div>
+    <div class="line-break"></div>
+    <div class="form-group">
+        <?php if (isset($_GET['visualizar'])): ?>
+            <button type="submit" name="modificar" title="GUARDAR" class="btn btn-success"><i class="fa fa-floppy-o fa-lg"></i>&nbsp; GUARDAR</button>
+            <a href="./clientes.php" title="VOLVER" class="btn btn-primary"><i class="fa fa-undo fa-lg"></i> VOLVER</a>
+        <?php else: ?>
+            <button type="submit" name="alta" class="btn btn-primary"><i class="fa fa-user fa-lg"></i>&nbsp; ALTA NUEVA</button>
+            <button type="submit" name="buscar" class="btn btn-primary"><i class="fa fa-search fa-lg"></i>&nbsp; BUSCAR</button>
+        <?php endif; ?>
+    </div>
 </form>
 <div class="clearfix"></div>
 </div>
