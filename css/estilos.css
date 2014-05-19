@@ -1,6 +1,6 @@
 ﻿@font-face{
     font-family: "open";
-    src: url("../fonts/OpenSansRegular.eot");
+    src: url("../fonts/OpenSans-Regular.ttf") format("truetype");
     /* Incluimos la fuente Open Sans de Google y nos referimos a ella como open. */
 }
 *{
@@ -43,7 +43,6 @@ header{
 nav{
     width:100%;
     max-width: 1170px;
-    margin: auto;
     height: 70px;
     text-align: center;
 }
@@ -56,6 +55,7 @@ nav ul li{
     line-height: 70px;
     vertical-align: middle;
     margin: 0 5px;
+    width:50px;
 }
 nav ul img{
     vertical-align: middle;
@@ -75,19 +75,19 @@ nav ul img:hover{
     margin: 0px 5px;
 }    
 
-ul#home-buttons{
+div#home-buttons ul{
     float: left;
-    width: 20%;
+    
     text-align: left;
 }
-ul#general-buttons{
+div#general-buttons ul{
     float: left;
-    width: 50%;
+    
     text-align: center;
 }
-ul#session-buttons{
+div#session-buttons ul{
     float: right;
-    width: 30%;
+    
     text-align: right;
     text-shadow: 2px 2px 2px #707070;
 }
@@ -150,40 +150,16 @@ footer{
     left: 0;
     z-index: 999;
 }
-
-/*  ESTILOS SANDRA */
-.logo{
-	float:left;
+footer div.fecha-hora{
+    line-height: 80px;
+    display: inline-block;
     vertical-align: middle;
+    margin: 20px 0px;
 }
-    .logo img{
-        width: 100%;
-        height: auto;
-        max-height: 75px;
-        max-width: 100%;
-    }
-.direccion{
-	float:left;
+footer div.fecha-hora input{
     text-align: center;
-	/*margin:75px 10px 0px 10px;*/
 }
-.fecha{
-    font-size: 18px;
-	float:right;
-    margin-right: 25px;
+footer img.logo{
+    width: 70%;
     vertical-align: middle;
-	/*margin:75px 10px 0px 10px;*/
-}
-.reloj{
-	float:right;
-    vertical-align: middle;
-	/*margin-top:65px;*/
-}
-.reloj input[name=reloj]{
-    width: 110px;
-    padding: 5px;
-    background-color: #262626;
-    color: #FFFFFF;
-    font-size: 18px;
-    text-align : center;
 }
