@@ -1,6 +1,6 @@
 ﻿@font-face{
     font-family: "open";
-    src: url("../fonts/OpenSansRegular.eot");
+    src: url("../fonts/OpenSans-Regular.ttf") format("truetype");
     /* Incluimos la fuente Open Sans de Google y nos referimos a ella como open. */
 }
 *{
