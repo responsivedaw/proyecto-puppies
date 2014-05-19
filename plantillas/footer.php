@@ -10,9 +10,9 @@
             </div>
             <div class="col-xs-4 fecha-hora">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <span class="input-group-addon"><i class="fa fa-calendar fa-lg"></i></span>
                     <input type="text" class="form-control" value="<?php echo (date("d/m/Y")); ?>" disabled="disabled" />
-                    <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                    <span class="input-group-addon"><i class="fa fa-clock-o fa-lg"></i></span>
                     <input type="text" class="form-control" id="reloj-footer" disabled="disabled" />
                 </div>
             </div>

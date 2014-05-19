@@ -156,6 +156,9 @@ footer div.fecha-hora{
     vertical-align: middle;
     margin: 20px 0px;
 }
+footer div.fecha-hora input{
+    text-align: center;
+}
 footer img.logo{
     width: 70%;
     vertical-align: middle;
