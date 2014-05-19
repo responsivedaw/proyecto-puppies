@@ -65,15 +65,7 @@
                         } elseif (isset($_POST['buscar'])){
                             $resultados=Cliente::buscar($_POST);
                             if (sizeof($resultados)==0){
-                                ?>
-                                <div class="jumbotron">
-                                    <div class="container">
-                                        <h2>RESULTADOS:</h2>
-                                        <p>Su búsqueda no devuelve resultados.</p>
-                                        <p><a class="btn btn-primary btn-lg" href="./clientes.php" role="button">VOLVER</a></p>
-                                    </div>
-                                </div>
-                                <?php
+                                include "./plantillas/clientes_error_busqueda.php";
                             } else {
                                 include "./plantillas/clientes_listado_clientes.php";
                             }
