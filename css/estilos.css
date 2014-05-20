@@ -21,6 +21,7 @@ body{
 .main-content{
     width: 100%;
     margin: 100px auto;
+	min-height: 780px;
 }
 div.line-break{
     border-top: 1px solid #CCCCCC;
@@ -156,10 +157,57 @@ footer div.fecha-hora{
     vertical-align: middle;
     margin: 20px 0px;
 }
+footer div.empresa-footer{
+	line-height: initial;
+	vertical-align: middle;
+	margin-top: 10px;
+}
+footer div.empresa-footer p{
+	
+}
 footer div.fecha-hora input{
     text-align: center;
 }
-footer img.logo{
-    width: 70%;
+footer div.logo-footer img{
+    width: 80%;
     vertical-align: middle;
+	min-width: 100px;
+	height: auto;
+}
+div.home-btn{
+	padding: 5px;
+	border: 4px solid #000000;
+	border-radius: 8px;
+	overflow: hidden;
+	margin-top: 90px;
+}
+div.home-btn:hover{
+	opacity: .6;
+	box-shadow: 2px 2px 3px #262626;
+}
+div.home-btns a img{
+	width: 100%;
+}
+div.home-btn h3{
+	border-top: 4px solid #000000;
+	text-align: center;
+	width: 100%;
+	min-width: 100%;
+	padding-top: 10px;
+}
+
+
+
+
+
+/*******************	MEDIA QUERIES **************************/
+
+@media only screen and (max-width: 768px){
+	footer div.empresa-footer p{
+		font-size: 12px;
+	}
+	footer div.fecha-hora input{
+		font-size: 10px;
+		padding: 6px 4px;
+	}
 }

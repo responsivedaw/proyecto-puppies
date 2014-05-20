@@ -2,11 +2,11 @@
 <footer>
 	<div class="container">
 	    <div class="row">
-            <div class="col-xs-2">
-                <img src="images/puppies_256x181.png" alt="puppies.png" title="Puppies S.L." class="logo" />
+            <div class="col-xs-2 logo-footer">
+                <img src="images/puppies_256x181.png" alt="puppies.png" title="Puppies S.L." />
             </div>
-            <div class="col-xs-6">
-                <p>Puppies S. L. - Calle Valdemorillo, 51. Polígono Industrial Ventorro del Cano (Alcorcón)</p>
+            <div class="col-xs-5 col-xs-offset-1 empresa-footer">
+                <p>PUPPIES S.L.<br/>C/ Valdemorillo 51 - Pol. Ind. Ventorro del Cano<br/>Alcorcón</p>
             </div>
             <div class="col-xs-4 fecha-hora">
                 <div class="input-group">
