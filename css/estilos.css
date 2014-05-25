@@ -1,8 +1,16 @@
-﻿@font-face{
+/* IMPORTACION FUENTES */
+@font-face{
     font-family: "open";
     src: url("../fonts/OpenSans-Regular.ttf") format("truetype");
-    /* Incluimos la fuente Open Sans de Google y nos referimos a ella como open. */
+    /* Fuente Firefox/Chrome/Safari/Opera */
 }
+@font-face{
+    font-family: "open";
+    src: url("../fonts/OpenSans-Regular-webfont.woff") format("woff");
+    /* Fuente IExplorer 9+ */
+}
+
+/* ESTILOS GLOBALES */
 *{
     margin:0;
     padding:0;
@@ -11,8 +19,13 @@
     clear:both;
 }
 body{
-    background: url(../images/fondopatas.gif);
-    font-family: open;
+	font-family: open;
+}
+body.bg-autenticado{
+    background: #DFDCCB url(../images/fondo-amarillo-1.jpg);
+}
+body.bg-no-autenticado{
+	background: #DFDCCB url(../images/fondo-amarillo-1.jpg);
 }
 .container{
     width: 100%;
@@ -20,8 +33,8 @@ body{
 }
 .main-content{
     width: 100%;
-    margin: 100px auto;
-	min-height: 780px;
+    padding: 100px 0px;
+	min-height: 100vh;
 }
 div.line-break{
     border-top: 1px solid #CCCCCC;
@@ -30,12 +43,31 @@ div.line-break{
     margin-bottom: 10px;
     clear: both;
 }
+
+/* INDEX LOGIN */
+.form-login{
+	background: #ffffff url('../images/pattern1.png');
+	border-radius: 4px;
+	box-shadow: 0px 0px 6px #262626;
+}
+.login-logo{
+	text-align: center;
+}	
+.login-logo img{
+	width: 225px;
+	margin: 10px auto; 
+}
+.form-login form label{
+	text-align: left;
+}
+
+/* HEADER */
 header{
     height: 70px;
     width: 100%;
     border-bottom: 3px solid #b5b5b5;
     box-shadow: 0px 1px 6px #262626;
-    background: url('../images/fondo-formularios-semi.jpg');
+    background: url('../images/fondo01-70.jpg');
     position: fixed;
     top: 0;
     left: 0;
@@ -65,7 +97,9 @@ nav ul img{
     margin: 0px 10px;
     border: 2px solid #000000;
     border-radius: 4px;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;        /* Opera/IE 8+ */
     transition: all .2s ease;
 }
 nav ul img:hover{
@@ -74,24 +108,91 @@ nav ul img:hover{
     /* top: 5px; */
     box-shadow: 5px 5px 3px #707070;
     margin: 0px 5px;
-}    
-
-div#home-buttons ul{
-    float: left;
-    
-    text-align: left;
 }
 div#general-buttons ul{
     float: left;
-    
     text-align: center;
 }
 div#session-buttons ul{
     float: right;
-    
     text-align: right;
     text-shadow: 2px 2px 2px #707070;
 }
+
+/* FOOTER */
+footer{
+    height: 80px;
+    line-height: 80px;
+    vertical-align: middle;
+    width: 100%;
+    border-top: 3px solid #b5b5b5;
+    box-shadow: 0px -1px 6px #262626;
+    background: url('../images/fondo01-80.jpg');
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+}
+footer div.fecha-hora{
+    line-height: 80px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 20px 0px;
+}
+footer div.empresa-footer{
+	line-height: initial;
+	vertical-align: middle;
+	margin-top: 10px;
+}
+footer div.empresa-footer p{
+	
+}
+footer div.fecha-hora input{
+    text-align: center;
+}
+footer div.logo-footer img{
+    width: 80%;
+    vertical-align: middle;
+	min-width: 100px;
+	height: auto;
+}
+
+/* HOME.PHP */
+div.home-btns{
+	background: #CFCFCF url(../images/pattern1.png);
+	padding-bottom: 80px;
+	border-radius: 6px;
+    box-shadow: 0px 0px 6px #262626;
+}
+div.home-buttons ul{
+    float: left;
+    text-align: left;
+}
+div.home-btn{
+	padding: 5px;
+	border: 4px solid #000000;
+	overflow: hidden;
+	margin-top: 80px;
+	border-radius: 6px;
+    box-shadow: 0px 0px 6px #262626;
+}
+div.home-btn:hover{
+	opacity: .6;
+	box-shadow: 2px 2px 3px #262626;
+	background: url(../images/pattern7.png);
+}
+div.home-btns a img{
+	width: 100%;
+}
+div.home-btn h3{
+	border-top: 4px solid #000000;
+	text-align: center;
+	width: 100%;
+	min-width: 100%;
+	padding-top: 10px;
+}
+
+/* CLIENTES.PHP */
 label{
     cursor: pointer;
     padding-left:0 !important;
@@ -100,13 +201,16 @@ input[readonly]{
 	background-color: #E5DFD5;
 	cursor: not-allowed;
 }
+div.clientes-content{
+	border-radius: 6px;
+    box-shadow: 0px 0px 6px #262626;
+    background: #CFCFCF url(../images/pattern1.png);
+	padding: 20px;
+}
 div.form-clientes{
     /*margin-bottom: 100px;*/
-    padding: 15px;
+    /*padding: 15px;*/
     /*border:2px solid #000000;*/
-    border-radius: 6px;
-    box-shadow: 0px 0px 6px #262626;
-    background: url('../images/fondo-formularios-semi.jpg');
 }
 div.form-clientes form{
     font-size: 12px;
@@ -138,62 +242,22 @@ h1.img-title{
     margin:5px auto;
     text-shadow: 2px 2px 2px #707070;
 }
-footer{
-    height: 80px;
-    line-height: 80px;
-    vertical-align: middle;
-    width: 100%;
-    border-top: 3px solid #b5b5b5;
-    box-shadow: 0px -1px 6px #262626;
-    background: url('../images/fondo-formularios-semi.jpg');
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 999;
-}
-footer div.fecha-hora{
-    line-height: 80px;
-    display: inline-block;
-    vertical-align: middle;
-    margin: 20px 0px;
-}
-footer div.empresa-footer{
-	line-height: initial;
-	vertical-align: middle;
-	margin-top: 10px;
-}
-footer div.empresa-footer p{
-	
-}
-footer div.fecha-hora input{
-    text-align: center;
-}
-footer div.logo-footer img{
-    width: 80%;
-    vertical-align: middle;
-	min-width: 100px;
-	height: auto;
-}
-div.home-btn{
-	padding: 5px;
-	border: 4px solid #000000;
-	border-radius: 8px;
-	overflow: hidden;
-	margin-top: 90px;
-}
-div.home-btn:hover{
-	opacity: .6;
-	box-shadow: 2px 2px 3px #262626;
-}
-div.home-btns a img{
-	width: 100%;
-}
-div.home-btn h3{
-	border-top: 4px solid #000000;
+
+/* LOGOUT.PHP */
+div.session-logout{
+	border-radius: 6px;
+    box-shadow: 0px 0px 6px #262626;
+    background: #CFCFCF url(../images/pattern1.png);
+	padding: 20px;
 	text-align: center;
-	width: 100%;
-	min-width: 100%;
-	padding-top: 10px;
+}
+
+/* ESTILOS PLANTILLAS */
+
+div.session-error{
+	width: 90%;
+	max-width: 500px;
+	text-align: center;
 }
 
 

@@ -2,22 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Document</title>
     <!-- GENERICOS -->
+    <link rel="stylesheet" type="text/css" href="./css/ui/jquery-ui.css" />
     <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css" />
     <script type="text/javascript" src="./js/jquery.js"></script>
+    <script type="text/javascript" src="./js/jquery-ui.js"></script>
     <script type="text/javascript" src="./js/bootstrap.min.js"></script>
     <!-- PROPIOS -->
     <link rel="stylesheet" type="text/css" href="./css/estilos.css" />
-    <script type="text/javascript" src="./js/footer.js"></script>
+    <script type="text/javascript" src="./js/jquery.form-validator.min.js"></script>    
+    <script type="text/javascript" src="./js/clientes.js"></script>    
     <!--PHP-->
     <?php require_once "./includes/functions.php"; ?>
     <?php require_once "./includes/database_functions.php"; ?>
     <?php session_start(); ?>
-    <?php $_SESSION['id_usuario']=2; ?>
 </head>
-<body>
+<body class="bg-autenticado">
     <?php require_once "./plantillas/header.php"; ?>
     <div class="main-content">
         <div class="container">
@@ -37,10 +40,8 @@
                                 $cliente=$resultados[0];
                                 include "./plantillas/clientes_form_cliente.php";
                             } elseif (isset($_GET['borrar'])){
-                                //var_dump($_GET);
                                 // Recuperamos datos antes de eliminarlo para visualizarlo.
                                 $resultados=Cliente::buscar($_GET['id_cliente']);
-                                //var_dump($resultados);
                                 $ult_cliente=$_GET['id_cliente'];
                                 $datos=$resultados[0];
                                 //Borramos cliente
@@ -57,7 +58,6 @@
                                 $ult_cliente=$cliente->insertar();
                                 // Recibimos las propiedades del objeto en una array asociativo.
                                 $datos=$cliente->to_array();
-                                //var_dump($datos);
                                 include "./plantillas/clientes_ficha_cliente.php";
                             } else {
                                 include "./plantillas/clientes_error_validacion.php";
@@ -70,16 +70,12 @@
                                 include "./plantillas/clientes_listado_clientes.php";
                             }
                         } elseif (isset($_POST['modificar'])){
-                            //var_dump($_POST);
                             $cliente=new Cliente($_POST);
-                            //var_dump($cliente);
                             if ($cliente->validar()){
-                                //echo 'validado';
                                 $ult_cliente=$cliente->modificar();
                                 $datos=$cliente->to_array();
                                 include "./plantillas/clientes_ficha_cliente.php";
                             } else {
-                                //echo 'no validado';
                                 include "./plantillas/clientes_error_validacion.php";
                             }                    
                         }

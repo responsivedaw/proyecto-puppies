@@ -29,7 +29,7 @@
         }        
     }
     function validar_nif($nif){
-        $patron_nif="/^\d{8}[A-Z]?$/";
+        $patron_nif="/^\d{8}[A-Z]$/";
         return preg_match($patron_nif,$nif);
     }
     function validar_direccion($direccion){

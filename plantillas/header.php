@@ -20,7 +20,7 @@
         </div>
         <div id="session-buttons" class="col-md-3 col-md-offset-1">
             <ul>
-                <li style="width:auto;"><?php echo (isset($_SESSION['nombre_usuario']))?($_SESSION['nombre_usuario']):("David Rodríguez"); ?></li>
+                <li style="width:auto;"><?php echo (isset($_SESSION['nombre_usuario']))?($_SESSION['nombre_usuario']):("Invitado"); ?></li>
                 <li><a href="./logout.php"><img src="images/salir100.png" alt="salir" title="SALIR" width="40"></a></li>
             </ul>
         </div>

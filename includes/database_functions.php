@@ -26,16 +26,31 @@
     }
 
     function get_localidades(){
-        // Nos devuleve un array con todas las localidades
+        // Nos devuleve un array con todas las localidades. El indice se corresponde con el cpostal_localidad.
         $conn=conexion_puppiesdb();
         $query="SELECT * FROM localidades ORDER BY nombre_localidad ASC;";
         $result=mysqli_query($conn,$query) or die ("Error en recuperacion de localidades:".mysqli_error($conn));
         $localidades=array();
         while ($localidad=mysqli_fetch_assoc($result)){
-            $localidades[]=$localidad;
+            $localidades[$localidad['cpostal_localidad']]=$localidad;
         }
         mysqli_close($conn);
         return $localidades;
     }
+	
+	function usuario_autenticado($user,$pass){
+		$conn=conexion_puppiesdb();
+		$query="SELECT * FROM usuarios WHERE activo_usuario=1";
+		$query.=" AND usuario='".mysqli_real_escape_string($conn,$user)."'";
+		$query.=" AND pwd_usuario='".hash('sha1',$pass)."'";
+		var_dump($query);
+		$result=mysqli_query($conn,$query) or die ("ERROR en la consulta de usuraio: ".mysqli_error($conn));
+		if (mysqli_num_rows($result)!=0){
+			$fila=mysqli_fetch_assoc($result);
+			return $fila;
+		} else {
+			return false;
+		}
+	}
 
 ?>

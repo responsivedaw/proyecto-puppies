@@ -11,57 +11,55 @@
     <script type="text/javascript" src="./js/bootstrap.min.js"></script>
     <!-- PROPIOS -->
     <link rel="stylesheet" type="text/css" href="./css/estilos.css" />
-    <script type="text/javascript" src="./js/footer.js"></script>
     <!--PHP-->
-    <?php require_once "./includes/functions.php"; ?>
-    <?php require_once "./includes/database_functions.php"; ?>
     <?php session_start(); ?>
-    <?php $_SESSION['id_usuario']=2; ?>
 </head>
-<body>
+<body class="bg-autenticado">
+    
     <?php require_once "./plantillas/header.php"; ?>
     
-        <div class="main-content">
-            <div class="container">
-                <?php
-                    if (isset($_SESSION['id_usuario'])){
-                        ?>
-                        <div class="home-btns">
-                            <div class="row">
-                                <div class="col-md-2 col-md-offset-2 col-xs-3 col-xs-offset-2 home-btn">
-                                    <a href="./clientes.php"><img src="./images/clientes512.png" alt="clientes512.png" title="CLIENTES" /></a>
-                                    <h3>CLIENTES</h3>
-                                </div>
-                                <div class="col-md-2 col-md-offset-1 col-xs-3 col-xs-offset-2 home-btn">
-                                    <a href="./mascotas.php"><img src="./images/mascotas512.png" alt="mascotas512.png" title="MASCOTAS" /></a>
-                                    <h3>MASCOTAS</h3>
-                                </div>
-                                <div class="col-md-2 col-md-offset-1 col-xs-3 col-xs-offset-2 home-btn">
-                                    <a href="./almacen.php.php"><img src="./images/almacen512.png" alt="almacen512.png" title="ALMACÉN" /></a>
-                                    <h3>ALMACÉN</h3>
-                                </div>
-                                <div class="col-md-2 col-md-offset-2 col-xs-3 col-xs-offset-2 home-btn disabled">
-                                    <a href="./facturacion.php"><img src="./images/facturacion512.png" alt="facturacion512.png" title="FACTURACIÓN" /></a>
-                                    <h3>FACTURACIÓN</h3>
-                                </div>
-                                <div class="col-md-2 col-md-offset-1 col-xs-3 col-xs-offset-2 home-btn">
-                                    <a href="./agenda.php"><img src="./images/agenda512.png" alt="agenda512.png" title="AGENDA" /></a>
-                                    <h3>AGENDA</h3>
-                                </div>
-                                <div class="col-md-2 col-md-offset-1 col-xs-3 col-xs-offset-2 home-btn">
-                                    <a href="./listados.php"><img src="./images/listados512.png" alt="listados512.png" title="LISTADOS" /></a>
-                                    <h3>LISTADOS</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <?php
-                    } else {
-                        include "./plantillas/clientes_error_sesion.php";
-                    }
+    <div class="main-content">
+        <div class="container">
+            <?php
+            if (isset($_SESSION['id_usuario'])){
                 ?>
-            </div>
+                <div class="home-btns">
+                    <div class="row">
+                        <div class="col-md-2 col-md-offset-2 col-xs-3 col-xs-offset-2 home-btn">
+                            <a href="./clientes.php"><img src="./images/clientes512.png" alt="clientes512.png" title="CLIENTES" /></a>
+                            <h3>CLIENTES</h3>
+                        </div>
+                        <div class="col-md-2 col-md-offset-1 col-xs-3 col-xs-offset-2 home-btn">
+                            <a href="./mascotas.php"><img src="./images/mascotas512.png" alt="mascotas512.png" title="MASCOTAS" /></a>
+                            <h3>MASCOTAS</h3>
+                        </div>
+                        <div class="col-md-2 col-md-offset-1 col-xs-3 col-xs-offset-2 home-btn">
+                            <a href="./almacen.php"><img src="./images/almacen512.png" alt="almacen512.png" title="ALMACÉN" /></a>
+                            <h3>ALMACÉN</h3>
+                        </div>
+                        <div class="col-md-2 col-md-offset-2 col-xs-3 col-xs-offset-2 home-btn disabled">
+                            <a href="./facturacion.php"><img src="./images/facturacion512.png" alt="facturacion512.png" title="FACTURACIÓN" /></a>
+                            <h3>FACTURACIÓN</h3>
+                        </div>
+                        <div class="col-md-2 col-md-offset-1 col-xs-3 col-xs-offset-2 home-btn">
+                            <a href="./agenda.php"><img src="./images/agenda512.png" alt="agenda512.png" title="AGENDA" /></a>
+                            <h3>AGENDA</h3>
+                        </div>
+                        <div class="col-md-2 col-md-offset-1 col-xs-3 col-xs-offset-2 home-btn">
+                            <a href="./listados.php"><img src="./images/listados512.png" alt="listados512.png" title="LISTADOS" /></a>
+                            <h3>LISTADOS</h3>
+                        </div>
+                    </div>
+                </div>
+                <?php
+            } else {
+                include "./plantillas/clientes_error_sesion.php";
+            }
+            ?>
         </div>
+    </div>
         
     <?php require_once "./plantillas/footer.php"; ?>
+    
 </body>
 </html>

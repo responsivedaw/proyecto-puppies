@@ -1,4 +1,4 @@
-<div class="panel panel-danger">
+<div class="panel panel-danger center-block session-error">
   <div class="panel-heading"><i class="fa fa-exclamation-triangle"></i> ERROR DE INICIO DE SESIÓN <i class="fa fa-exclamation-triangle"></i></div>
   <div class="panel-body">
       <p>Debe iniciar sesión para acceder a la aplicación.</p>
