@@ -43,6 +43,9 @@ div.line-break{
     margin-bottom: 10px;
     clear: both;
 }
+/* Iconos validacion de formularios */
+.error{background:#fff url(../images/smiley-fail.png) no-repeat center right !important;}
+.valid{background:#fff url(../images/smiley-ok.png) no-repeat center right !important;}
 
 /* INDEX LOGIN */
 .form-login{

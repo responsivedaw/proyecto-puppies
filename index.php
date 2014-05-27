@@ -1,3 +1,19 @@
+<?php
+	if ($_POST){
+		require_once "./includes/database_functions.php";
+		$autenticado=usuario_autenticado($_POST['usuario'],$_POST['pwd_usuario']);
+		//var_dump($autenticado);
+		if ($autenticado){
+			session_start();
+			$_SESSION['id_usuario']=$autenticado['id_usuario'];
+			$_SESSION['nombre_usuario']=$autenticado['nombre_usuario'];
+			$_SESSION['id_perfil']=$autenticado['id_perfil'];
+			//var_dump($_SESSION);
+			header("Location: ./home.php");
+			// Hacemos la redireccion al principio porque no funciona bien en el hosting.
+		}
+	}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,21 +31,6 @@
 	<script type="text/javascript" src="./js/index.js"></script>
 </head>
 <body class="bg-no-autenticado">
-	<?php
-		if ($_POST){
-			require_once "./includes/database_functions.php";
-			$autenticado=usuario_autenticado($_POST['usuario'],$_POST['pwd_usuario']);
-			//var_dump($autenticado);
-			if ($autenticado){
-				session_start();
-				$_SESSION['id_usuario']=$autenticado['id_usuario'];
-				$_SESSION['nombre_usuario']=$autenticado['nombre_usuario'];
-				$_SESSION['id_perfil']=$autenticado['id_perfil'];
-				//var_dump($_SESSION);
-				header("Location: ./home.php");
-			}
-		}
-	?>
 	<div class="main-content">
 		<div class="container">
 			<div class="row">

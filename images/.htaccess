@@ -1,0 +1,6 @@
+# Do not remove this line or mod_rewrite rules and search engine friendly URLs will stop working
+RewriteBase /
+# Habilitamos modo depuracion - Comentar las dos siguientes lineas cuando se deje en produccion.
+php_flag display_errors 1
+php_value error_reporting 7
+
