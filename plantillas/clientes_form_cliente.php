@@ -17,7 +17,7 @@
     <div class="row">
         <div class="form-group col-md-2 col-xs-2">
             <label for="nif_cliente">NIF/NIE:</label>
-            <input type="text" name="nif_cliente" id="nif_cliente" maxlength="10" class="form-control" placeholder="12345678P" <?php echo (isset($cliente['nif_cliente']))?'value="'.$cliente['nif_cliente'].'"':''; ?> data-validation="custom" data-validation-regexp="^\d{8}[A-Z]$" data-validation-error-msg="Introduzca un NIF correcto." />
+            <input type="text" name="nif_cliente" id="nif_cliente" maxlength="10" class="form-control" placeholder="12345678P" <?php echo (isset($cliente['nif_cliente']))?'value="'.$cliente['nif_cliente'].'"':''; ?> data-validation="custom" data-validation-regexp="^\d{8}[a-zA-Z]$" data-validation-error-msg="Introduzca un NIF correcto." />
         </div>
         <div class="form-group col-md-2 col-xs-2">
             <label for="fnac_cliente">FECHA NAC.: </label>
@@ -95,7 +95,7 @@
         </div>
         <div class="form-group col-md-4 col-md-offset-1 col-xs-4 col-xs-offset-1">
             <label for="email_cliente">Email: </label>
-            <input type="text" name="email_cliente" id="email_cliente" class="form-control" <?php echo (isset($cliente['email_cliente']))?'value="'.$cliente['email_cliente'].'"':''; ?> placeholder="email@dominio.com" data-validation="email" data-validation-optional="true" data-validation-error-msg="Introduzca un email correcto." />
+            <input type="email" name="email_cliente" id="email_cliente" class="form-control" <?php echo (isset($cliente['email_cliente']))?'value="'.$cliente['email_cliente'].'"':''; ?> placeholder="email@dominio.com" data-validation="email" data-validation-optional="true" data-validation-error-msg="Introduzca un email correcto." />
         </div>
         <div class="form-group col-md-3 col-xs-3">
             <label>¿DESEA RECIBIR EMAILS?</label>

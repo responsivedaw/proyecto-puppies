@@ -49,7 +49,7 @@
 				<form action="" name="login" id="login" role="form" method="post">
 					<div class="form-group">
 						<label for="usuario">Email:</label>
-						<input type="text" name="usuario" id="usuario" placeholder="Introduce un email" class="form-control" data-validation="email" data-validation-error-msg="Debes introducir un email correcto!!" />
+						<input type="email" name="usuario" id="usuario" placeholder="Introduce un email" class="form-control" data-validation="email" data-validation-error-msg="Debes introducir un email correcto!!" />
 					</div>
 					<div class="form-group">
 						<label for="pwd_usuario">Contraseña:</label>
