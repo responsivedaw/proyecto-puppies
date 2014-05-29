@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Document</title>
     <!-- GENERICOS -->
     <link rel="stylesheet" type="text/css" href="./css/ui/jquery-ui.css" />
@@ -64,6 +63,27 @@
                             }
                         } elseif (isset($_POST['buscar'])){
                             $resultados=Cliente::buscar($_POST);
+                            var_dump($resultados);
+                            var_dump($resultados);
+                            var_dump($resultados);
+                            var_dump($resultados);
+                            var_dump($resultados);
+                            var_dump($resultados);
+                            var_dump($resultados);
+                            var_dump($resultados);
+                            var_dump($resultados);
+                            var_dump($resultados);
+                            var_dump($resultados);
+                            var_dump($resultados);
+                            var_dump($resultados);
+                            var_dump($resultados);
+                            var_dump($resultados);
+                            var_dump($resultados);
+                            var_dump($resultados);
+                            var_dump($resultados);
+                            var_dump($resultados);
+                            var_dump($resultados);
+                            var_dump($resultados);
                             if (sizeof($resultados)==0){
                                 include "./plantillas/clientes_error_busqueda.php";
                             } else {
