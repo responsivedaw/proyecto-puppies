@@ -15,7 +15,7 @@
                 <li><a href="./almacen.php"><img src="images/almacen100.png" alt="almacen" title="ALMACEN" width="40"></a></li>
                 <li><a href="./facturacion.php"><img src="images/facturacion100.png" alt="facturacion" title="FACTURACION" width="40"></a></li>
                 <li><a href="./agenda.php"><img src="images/agenda100.png" alt="agenda" title="AGENDA" width="40"></a></li>
-                <li><a href="./listados-php"><img src="images/listados100.png" alt="listados" title="LISTADOS" width="40"></a></li>
+                <li><a href="./listados.php"><img src="images/listados100.png" alt="listados" title="LISTADOS" width="40"></a></li>
             </ul>
         </div>
         <div id="session-buttons" class="col-md-3 col-md-offset-1">
