@@ -255,6 +255,47 @@ div.session-logout{
 	text-align: center;
 }
 
+/* MASCOTAS.PHP */
+
+div.form-mascotas form{
+    font-size: 12px;
+}
+.fileUpload {
+	position: relative;
+	overflow: hidden;
+	margin: 5px auto;
+	width: 105px;
+}
+.fileUpload input.upload {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+input#url-add-photo{
+	margin: 0px 10px 5px 10px;
+	max-width: 95%;
+	display: none;
+}
+div#citas-mascota{
+    height: 150px;
+    overflow: auto;
+    margin-bottom: 10px;
+}
+div#citas-mascota table{
+    background-color: #f9f9f9;
+    vertical-align: middle;
+    border-radius: 4px;
+}
+div#citas-mascota table tr td a{
+    padding: 4px 8px;
+}
+
 /* ESTILOS PLANTILLAS */
 
 div.session-error{
@@ -263,7 +304,11 @@ div.session-error{
 	text-align: center;
 }
 
+/* DATEPICKER */
 
+div.ui-datepicker{
+	z-index: 999 !important;
+}
 
 
 

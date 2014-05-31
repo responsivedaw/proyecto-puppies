@@ -8,9 +8,11 @@
     <link rel="stylesheet" type="text/css" href="./css/ui/jquery-ui.css" />
     <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="./css/lightbox.css" />
     <script type="text/javascript" src="./js/jquery.js"></script>
     <script type="text/javascript" src="./js/jquery-ui.js"></script>
     <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/lightbox.min.js"></script>
     <!-- PROPIOS -->
     <link rel="stylesheet" type="text/css" href="./css/estilos.css" />
     <script type="text/javascript" src="./js/jquery.form-validator.min.js"></script>    
@@ -80,7 +82,7 @@
                             }                    
                         }
                     } else {
-                        include "./plantillas/clientes_error_sesion.php";
+                        include "./plantillas/error_sesion.php";
                     }
                 ?>
                 </div><!-- clientes-content -->

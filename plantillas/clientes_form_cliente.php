@@ -69,7 +69,7 @@
                 $provincia=null;
                 foreach ($localidades as $localidad){
                     $option="<option value='{$localidad['cpostal_localidad']}'";
-                    if (isset($cliente[cpostal_cliente])&&($cliente['cpostal_cliente']==$localidad['cpostal_localidad'])){
+                    if (isset($cliente['cpostal_cliente'])&&($cliente['cpostal_cliente']==$localidad['cpostal_localidad'])){
                         $option.=' selected="selected"';
                         $provincia=$localidad['provincia_localidad'];
                     }
