@@ -38,47 +38,50 @@
                         if (!$_POST){
                             if (isset($_GET['visualizar'])){
                                 // Despues de mostrar los resultados, llegamos con el id seleccionado.
-                                $resultados=Cliente::buscar($_GET['id_cliente']);
-                                $cliente=$resultados[0];
+                                $mascotas=Mascota::buscar($_GET['id_mascota']);
+                                $mascota=$mascotas[0];
                                 include "./plantillas/mascotas_form_mascota.php";
                             } elseif (isset($_GET['borrar'])){
                                 // Recuperamos datos antes de eliminarlo para visualizarlo.
-                                $resultados=Cliente::buscar($_GET['id_cliente']);
-                                $ult_cliente=$_GET['id_cliente'];
-                                $datos=$resultados[0];
+                                $mascotas=Mascota::buscar($_GET['id_mascota']);
+                                //$ult_mascota=$_GET['id_mascota'];
+                                $mascota=$mascotas[0];
                                 //Borramos cliente
-                                Cliente::borrar($_GET['id_cliente']);
-                                include "./plantillas/clientes_ficha_cliente.php";
+                                Mascota::borrar($_GET['id_mascota']);
+                                include "./plantillas/mascotas_ficha_mascota.php";
                             } else {
                                 include "./plantillas/mascotas_form_mascota.php";
                             }                    
                         } elseif (isset($_POST['alta'])){
+                            //var_dump($_POST);
+                            //var_dump($_FILES);
                             // Instanciamos cliente con los datos recibidos del POST
-                            $cliente=new Cliente($_POST);
-                            //var_dump($cliente);
-                            if ($cliente->validar()){
-                                $ult_cliente=$cliente->insertar();
-                                // Recibimos las propiedades del objeto en una array asociativo.
-                                $datos=$cliente->to_array();
-                                include "./plantillas/clientes_ficha_cliente.php";
+                            $mascota=new Mascota($_POST);
+                            //var_dump($mascota);
+                            if ($mascota->validar()){
+                                $ult_mascota=$mascota->insertar();
+                                // Recibimos las propiedades del objeto en una array asociativo pq los atributos con privados.
+                                $datos=$mascota->to_array();
+                                include "./plantillas/mascotas_ficha_mascota.php";
                             } else {
-                                include "./plantillas/clientes_error_validacion.php";
+                                include "./plantillas/mascotas_error_validacion.php";
                             }
                         } elseif (isset($_POST['buscar'])){
-                            $resultados=Cliente::buscar($_POST);
-                            if (sizeof($resultados)==0){
-                                include "./plantillas/clientes_error_busqueda.php";
+                            //var_dump($_POST);
+                            $mascotas=Mascota::buscar($_POST);
+                            if (sizeof($mascotas)==0){
+                                include "./plantillas/mascotas_error_busqueda.php";
                             } else {
-                                include "./plantillas/clientes_listado_clientes.php";
+                                include "./plantillas/mascotas_listado_mascotas.php";
                             }
                         } elseif (isset($_POST['modificar'])){
-                            $cliente=new Cliente($_POST);
-                            if ($cliente->validar()){
-                                $ult_cliente=$cliente->modificar();
-                                $datos=$cliente->to_array();
-                                include "./plantillas/clientes_ficha_cliente.php";
+                            $mascota=new Mascota($_POST);
+                            if ($mascota->validar()){
+                                $ult_mascota=$mascota->modificar();
+                                $datos=$mascota->to_array();
+                                include "./plantillas/mascotas_ficha_mascota.php";
                             } else {
-                                include "./plantillas/clientes_error_validacion.php";
+                                include "./plantillas/mascotas_error_validacion.php";
                             }                    
                         }
                     } else {

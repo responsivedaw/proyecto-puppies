@@ -5,29 +5,29 @@
             <div class="row">
                 <div class="form-group col-md-2">
                     <label for="id_mascota">CÓDIGO:</label>
-                    <input type="text" name="id_mascota" id="id_mascota" class="form-control" maxlength="6" <?php echo (isset($_GET['visualizar']))?'readonly="readonly"':''; ?> <?php echo (isset($mascota['id_mascota']))?'value="'.$mascota['id_mascota'].'"':''; ?> />
+                    <input type="text" name="id_mascota" id="id_mascota" class="form-control input-sm" maxlength="6" <?php echo (isset($_GET['visualizar']))?'readonly="readonly"':''; ?> <?php echo (isset($mascota['id_mascota']))?'value="'.$mascota['id_mascota'].'"':''; ?> />
                 </div>
                 <div class="form-group col-md-3">
                     <label for="chip_mascota">CHIP:</label>
-                    <input type="text" name="chip_mascota" id="chip_mascota" maxlength="16" class="form-control" placeholder="# Chip" <?php echo (isset($mascota['chip_mascota']))?'value="'.$mascota['chip_mascota'].'"':''; ?> data-validation="custom" data-validation-regexp="^\d{8}[A-Z]$" data-validation-error-msg="Introduzca un NIF correcto." />
+                    <input type="text" name="chip_mascota" id="chip_mascota" maxlength="15" class="form-control input-sm" placeholder="# Chip" <?php echo (isset($mascota['chip_mascota']))?'value="'.$mascota['chip_mascota'].'"':''; ?> data-validation="custom" data-validation-regexp="^\d{8}[A-Z]$" data-validation-error-msg="Introduzca un NIF correcto." />
                 </div>
                 <div class="form-group col-md-3 col-md-offset-4">
                     <label for="falta_mascota">FECHA ALTA:</label>
-                    <input type="text" name="falta_mascota" id="falta_mascota" class="form-control calendario" placeholder="DD/MM/AAAA" <?php echo (isset($mascota['falta_mascota']))?'value="'.formatear_fecha($mascota['falta_mascota']).'"':''; ?> <?php echo (isset($_GET['visualizar']))?'readonly':''; ?> />
+                    <input type="text" name="falta_mascota" id="falta_mascota" class="form-control calendario input-sm" placeholder="DD/MM/AAAA" <?php echo (isset($mascota['falta_mascota']))?'value="'.formatear_fecha($mascota['falta_mascota']).'"':''; ?> <?php echo (isset($_GET['visualizar']))?'readonly':''; ?> />
                 </div>
             </div>
             <div class="row">
                  <div class="form-group col-md-4">
                     <label for="nombre_mascota">NOMBRE:</label>
-                    <input type="text" name="nombre_mascota" id="nombre_mascota" class="form-control" placeholder="Nombre de la mascota" <?php echo (isset($mascota['nombre_mascota']))?'value="'.$mascota['nombre_mascota'].'"':''; ?> data-validation="custom" data-validation-regexp="^[a-zñáéíóúA-ZÑÁÉÍÓÚÜ]+(\s[a-zñáéíóúüA-ZÑÁÉÍÓÚÜ]+)*$" data-validation-error-msg="Introduzca un nombre correcto." />
+                    <input type="text" name="nombre_mascota" id="nombre_mascota" class="form-control input-sm" placeholder="Nombre de la mascota" <?php echo (isset($mascota['nombre_mascota']))?'value="'.$mascota['nombre_mascota'].'"':''; ?> data-validation="custom" data-validation-regexp="^[a-zñáéíóúA-ZÑÁÉÍÓÚÜ]+(\s[a-zñáéíóúüA-ZÑÁÉÍÓÚÜ]+)*$" data-validation-error-msg="Introduzca un nombre correcto." />
                 </div>
                 <div class="form-group col-md-4">
                     <label for="raza_mascota">RAZA:</label>
-                    <input type="text" name="raza_mascota" id="raza_mascota" class="form-control" placeholder="Raza" <?php echo (isset($mascota['raza_mascota']))?'value="'.$mascota['raza_mascota'].'"':''; ?> data-validation="custom" data-validation-regexp="^\d{8}[A-Z]$" data-validation-error-msg="Introduzca un NIF correcto." />
+                    <input type="text" name="raza_mascota" id="raza_mascota" class="form-control input-sm" placeholder="Raza" <?php echo (isset($mascota['raza_mascota']))?'value="'.$mascota['raza_mascota'].'"':''; ?> data-validation="custom" data-validation-regexp="^\d{8}[A-Z]$" data-validation-error-msg="Introduzca un NIF correcto." />
                 </div>
                 <div class="form-group col-md-3 col-md-offset-1">
                     <label for="fnac_mascota">FECHA NAC.:</label>
-                    <input type="text" name="fnac_mascota" id="fnac_mascota" class="form-control calendario" placeholder="DD/MM/AAAA" <?php echo (isset($mascota['fnac_mascota']))?'value="'.formatear_fecha($mascota['fnac_mascota']).'"':''; ?> data-validation="date" data-validation-format="dd/mm/yyyy" data-validation-error-msg="Introduzca una fecha correcta." />
+                    <input type="text" name="fnac_mascota" id="fnac_mascota" class="form-control calendario input-sm" placeholder="DD/MM/AAAA" <?php echo (isset($mascota['fnac_mascota']))?'value="'.formatear_fecha($mascota['fnac_mascota']).'"':''; ?> data-validation="date" data-validation-format="dd/mm/yyyy" data-validation-error-msg="Introduzca una fecha correcta." />
                 </div>
             </div>
             <div class="row">
@@ -37,9 +37,9 @@
                         <div class="col-md-5">
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <input type="radio" id="sexo_mascota_h" value="h" name="sexo_mascota" <?php echo (isset($mascota['sexo_mascota']) && $mascota['sexo_mascota']=='f')?'checked':''; ?> /> 
+                                    <input type="radio" id="sexo_mascota_h" value="hembra" name="genero_mascota" <?php echo (isset($mascota['sexo_mascota']) && $mascota['sexo_mascota']=='f')?'checked':''; ?> /> 
                                 </span>
-                                <div class="form-control">
+                                <div class="form-control input-sm">
                                     <label for="sexo_mascota_h">Hembra</label>
                                 </div>
                             </div>
@@ -47,9 +47,9 @@
                         <div class="col-md-5 col-md-offset-1">
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <input type="radio" id="sexo_mascota_m" value="m" name="sexo_mascota" <?php echo (isset($mascota['sexo_mascota']) && $mascota['sexo_mascota']=='m')?'checked':''; ?> />
+                                    <input type="radio" id="sexo_mascota_m" value="macho" name="genero_mascota" <?php echo (isset($mascota['sexo_mascota']) && $mascota['sexo_mascota']=='m')?'checked':''; ?> />
                                 </span>
-                                <div class="form-control">
+                                <div class="form-control input-sm">
                                     <label for="sexo_mascota_m">Macho</label>
                                 </div>
                             </div>
@@ -58,16 +58,16 @@
                 </div>
                 <div class="form-group col-md-2">
                     <label for="peso_mascota">PESO:</label>
-                    <input type="text" name="peso_mascota" id="peso_mascota" class="form-control" placeholder="Peso (x.x) kgs." <?php echo (isset($mascota['peso_mascota']))?'value="'.$mascota['peso_mascota'].'"':''; ?> data-validation="custom" data-validation-regexp="^\d{8}[A-Z]$" data-validation-error-msg="Introduzca un NIF correcto." />
+                    <input type="text" name="peso_mascota" id="peso_mascota" class="form-control input-sm" placeholder="Peso (x.x) kgs." <?php echo (isset($mascota['peso_mascota']))?'value="'.$mascota['peso_mascota'].'"':''; ?> data-validation="custom" data-validation-regexp="^\d{8}[A-Z]$" data-validation-error-msg="Introduzca un NIF correcto." />
                 </div>
-                <div class="form-group col-md-5">
+                <div class="form-group col-md-4 col-md-offset-1">
                     <label for="librovac_mascota">&nbsp;</label>
                     <div class="input-group">
                         <span class="input-group-addon">
-                            <input type="checkbox" id="librovac_mascota" value="h" name="librovac_mascota" <?php echo (isset($mascota['sexo_mascota']) && $mascota['sexo_mascota']=='f')?'checked':''; ?> /> 
+                            <input type="checkbox" id="librovac_mascota" value="1" name="librovac_mascota" <?php echo (isset($mascota['sexo_mascota']) && $mascota['sexo_mascota']=='f')?'checked':''; ?> /> 
                         </span>
-                        <div class="form-control">
-                            <label for="librovac_mascota">CARTILLA VACUNACIONES</label>
+                        <div class="form-control input-sm">
+                            <label for="librovac_mascota">CARTILLA VACUNAS</label>
                         </div>
                     </div>
                 </div>
@@ -75,12 +75,23 @@
         </div>
         <div class="col-md-3">
             <div class="thumbnail">
-                <a href="./images/mascotas/imagen2.jpg" data-lightbox="image-1" data-title="NOMBRE MASCOTA">
-                <img alt="foto.jpg" src="./images/mascotas/imagen2.jpg" title="Añadir nombre" class="img-rounded" id="img-frame" data-lightbox="image-1" data-title="PLUTO" />
+                <?php
+                    if (isset($mascota['id_mascota']) && file_exists(Mascota::$url_foto.$mascota['id_mascota'].".jpg")){
+                        $url=Mascota::$url_fotos.$mascota['id_mascota'].".jpg";
+                        $title=$mascota['nombre_mascota'];
+                        $alt=$mascota['id_mascota'].".jpg";
+                    } else {
+                        $url=Mascota::$url_fotos."no_photo.jpg";
+                        $title="NO HAY FOTO";
+                        $alt="no_photo.jpg";
+                    }
+                ?>
+                <a href="<?php echo $url; ?>" data-lightbox="image-1" data-title="<?php echo $title; ?>">
+                <img alt="<?php echo $alt; ?>" src="<?php echo $url; ?>" title="<?php echo $title; ?>" class="img-rounded" id="img-frame" data-lightbox="image-1" data-title="PLUTO" />
                 </a>
                 <div class="fileUpload btn btn-info btn-sm center-block">
                     <span><i class="fa fa-camera fa-lg"></i>&nbsp;&nbsp;ADJUNTAR</span>
-                    <input id="btn-add-photo" type="file" class="upload" />
+                    <input id="btn-add-photo" type="file" class="upload" name="foto_mascota" />
                 </div>
                 <input id="url-add-photo" class="form-control" placeholder="Choose File" disabled="disabled" />
             </div>
@@ -90,62 +101,65 @@
     <div class="row">
         <div class="form-group col-md-2">
             <label for="id_cliente">CLIENTE: </label>
-            <select name="id_cliente" id="id_cliente" class="form-control" data-validation="required" data-validation-error-msg="Seleccione un cliente.">
+            <select name="id_cliente" id="id_cliente" class="form-control input-sm" data-validation="required" data-validation-error-msg="Seleccione un cliente.">
                 <option value=''>Código ...</option>
                 <!-- Recuperamos clientes de la DB. -->
                 <?php
-                /*$clientes=get_clientes();
-                foreach ($clientes as $cliente){
-                    $option="<option value='{$cliente['id_cliente']}'";
-                    if (isset($mascota['id_cliente'])&&($mascota['id_cliente']==$cliente['id_cliente'])){
-                        $option.=' selected="selected"';
-                        $nombre=$cliente['nombre_cliente'];
-                        $apellidos=$cliente['apellidos_cliente'];
-                        $nif=$cliente['nif_cliente'];
-                        $tfno1=$cliente['tfno1_cliente'];
-                        $tfno2=$cliente['tfno2_cliente'];
-                        $email=$cliente['email_cliente'];
-                        $localidad=$cliente['nombre_localidad'];
+                    $clientes=Cliente::get_clientes(1);    //Solo quiero los clientes activo=1(true).
+                    //var_dump($clientes);
+                    foreach($clientes as $cliente){
+                        $option="<option value='{$cliente['id_cliente']}'";
+                        if (isset($mascota['id_cliente'])&&($mascota['id_cliente']==$cliente['id_cliente'])){
+                            $option.=' selected="selected"';
+                            $id_cliente=$cliente['id_cliente'];
+                            $nombre=$cliente['nombre_cliente'];
+                            $apellidos=$cliente['apellidos_cliente'];
+                            $nif=$cliente['nif_cliente'];
+                            $tfno1=$cliente['tfno1_cliente'];
+                            $tfno2=$cliente['tfno2_cliente'];
+                            $email=$cliente['email_cliente'];
+                            $localidad=$cliente['cpostal_cliente']." - ".$cliente['nombre_localidad'];
+                        }
+                        $option.=">{$cliente['id_cliente']}</option>";
+                        echo $option;
                     }
-                    echo $option;
-                }*/
                 ?>
             </select>
         </div>
         <div class="form-group col-md-3 col-md-offset-1">
             <label for="nombre_cliente">NOMBRE:</label>
-            <input type="text" name="nombre_cliente" id="nombre_cliente" class="form-control" placeholder="Nombre del Cliente" <?php echo (isset($nombre))?'value="'.$nombre.'"':''; ?> disabled="disabled" />
+            <input type="text" name="nombre_cliente" id="nombre_cliente" class="form-control input-sm" placeholder="Nombre del Cliente" <?php echo (isset($nombre))?'value="'.$nombre.'"':''; ?> disabled="disabled" />
         </div>
         <div class="form-group col-md-4">
             <label for="apellidos_cliente">APELLIDOS:</label>
-            <input type="text" name="apellidos_cliente" id="apellidos_cliente" class="form-control" placeholder="Apellidos del Cliente" <?php echo (isset($apellidos))?'value="'.$apellidos.'"':''; ?> disabled="disabled" />
+            <input type="text" name="apellidos_cliente" id="apellidos_cliente" class="form-control input-sm" placeholder="Apellidos del Cliente" <?php echo (isset($apellidos))?'value="'.$apellidos.'"':''; ?> disabled="disabled" />
         </div>
         <div class="form-group col-md-2">
             <label for="nif_cliente">NIF:</label>
-            <input type="text" name="nif_cliente" id="nif_cliente" class="form-control" placeholder="NIF del Cliente" <?php echo (isset($nif))?'value="'.$nif.'"':''; ?> disabled="disabled" />
+            <input type="text" name="nif_cliente" id="nif_cliente" class="form-control input-sm" placeholder="NIF del Cliente" <?php echo (isset($nif))?'value="'.$nif.'"':''; ?> disabled="disabled" />
         </div>
     </div>
     <div class="row">
         <div class="form-group col-md-2">
             <label for="tfno1_cliente">TFNO. 01:</label>
-            <input type="text" name="tfno1_cliente" id="tfno1_cliente" class="form-control" placeholder="Tfno. 01" <?php echo (isset($tfno1))?'value="'.$tfno1.'"':''; ?> disabled="disabled" />
+            <input type="text" name="tfno1_cliente" id="tfno1_cliente" class="form-control input-sm" placeholder="Tfno. 01" <?php echo (isset($tfno1))?'value="'.$tfno1.'"':''; ?> disabled="disabled" />
         </div>
         <div class="form-group col-md-2">
             <label for="tfno2_cliente">TFNO. 02:</label>
-            <input type="text" name="tfno2_cliente" id="tfno2_cliente" class="form-control" placeholder="Tfno. 02" <?php echo (isset($tfno2))?'value="'.$tfno2.'"':''; ?> disabled="disabled" />
+            <input type="text" name="tfno2_cliente" id="tfno2_cliente" class="form-control input-sm" placeholder="Tfno. 02" <?php echo (isset($tfno2))?'value="'.$tfno2.'"':''; ?> disabled="disabled" />
         </div>
         <div class="form-group col-md-4">
             <label for="email_cliente">EMAIL:</label>
-            <input type="text" name="email_cliente" id="email_cliente" class="form-control" placeholder="Email" <?php echo (isset($email))?'value="'.$email.'"':''; ?> disabled="disabled" />
+            <input type="text" name="email_cliente" id="email_cliente" class="form-control input-sm" placeholder="Email" <?php echo (isset($email))?'value="'.$email.'"':''; ?> disabled="disabled" />
         </div>
         <div class="form-group col-md-2">
             <label for="localidad_cliente">LOCALIDAD:</label>
-            <input type="text" name="localidad_cliente" id="localidad_cliente" class="form-control" placeholder="Localidad" <?php echo (isset($localidad))?'value="'.$localidad.'"':''; ?> disabled="disabled" />
+            <input type="text" name="localidad_cliente" id="localidad_cliente" class="form-control input-sm" placeholder="Localidad" <?php echo (isset($localidad))?'value="'.$localidad.'"':''; ?> disabled="disabled" />
         </div>
-        <div class="form-group col-md-1">
+        <div class="form-group col-md-2">
             <label for="">&nbsp;</label>
             <div class="input-group">
-            <a href="" title="IR A FICHA" class="btn btn-success"><i class="fa fa-eye fa-lg"></i>&nbsp;&nbsp;VER FICHA&nbsp;&nbsp;</a>
+            <a href="<?php echo (isset($id_cliente))?'./clientes.php?visualizar=true&id_cliente='.$id_cliente:'#'; ?>" title="IR A FICHA" class="btn btn-success btn-sm"><i class="fa fa-eye fa-lg"></i>&nbsp;&nbsp;VER FICHA&nbsp;&nbsp;</a>
             </div>
         </div>
     </div>

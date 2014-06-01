@@ -33,7 +33,7 @@ body.bg-no-autenticado{
 }
 .main-content{
     width: 100%;
-    padding: 100px 0px;
+    padding: 85px 0px;
 	min-height: 100vh;
 }
 div.line-break{
@@ -141,6 +141,7 @@ footer div.fecha-hora{
     display: inline-block;
     vertical-align: middle;
     margin: 20px 0px;
+	float: right;
 }
 footer div.empresa-footer{
 	line-height: initial;
@@ -260,10 +261,14 @@ div.session-logout{
 div.form-mascotas form{
     font-size: 12px;
 }
+div.form-mascotas div.thumbnail{
+	margin-bottom: 10px;
+	
+}
 .fileUpload {
 	position: relative;
 	overflow: hidden;
-	margin: 5px auto;
+	margin: 4px auto 2px auto;
 	width: 105px;
 }
 .fileUpload input.upload {
@@ -283,7 +288,7 @@ input#url-add-photo{
 	display: none;
 }
 div#citas-mascota{
-    height: 150px;
+    height: 140px;
     overflow: auto;
     margin-bottom: 10px;
 }

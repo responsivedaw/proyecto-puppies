@@ -16,17 +16,8 @@
         return preg_match($patron_apellidos,$apell);
     }
     function validar_fecha($fecha){
-        $patron_fecha="/^\d{2}\/\d{2}\/\d{4}$/";
-        if (preg_match($patron_fecha,$fecha)){
-            $fecha_inv=formatear_fecha($fecha);
-            if (date_create($fecha_inv)){
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }        
+        $patron_fecha="/^[0-3][0-9]\/[01][0-9]\/[12][019][0-9][0-9]$/";
+        return preg_match($patron_fecha,$fecha);
     }
     function validar_nif($nif){
         $patron_nif="/^\d{8}[A-Z]$/";
@@ -42,5 +33,9 @@
     function validar_cpostal($cpostal){
         $patron_cpostal="/^[01234]\d{4}$/";
         return preg_match($patron_cpostal,$cpostal);
+    }
+    function validar_chip($chip){
+        $patron_chip="/^\d{15}$/";
+        return preg_match($patron_chip,$chip);
     }
 ?>
