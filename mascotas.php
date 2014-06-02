@@ -45,7 +45,7 @@
                                 // Recuperamos datos antes de eliminarlo para visualizarlo.
                                 $mascotas=Mascota::buscar($_GET['id_mascota']);
                                 //$ult_mascota=$_GET['id_mascota'];
-                                $mascota=$mascotas[0];
+                                $datos=$mascotas[0];
                                 //Borramos cliente
                                 Mascota::borrar($_GET['id_mascota']);
                                 include "./plantillas/mascotas_ficha_mascota.php";

@@ -9,11 +9,11 @@
                 </div>
                 <div class="form-group col-md-3">
                     <label for="chip_mascota">CHIP:</label>
-                    <input type="text" name="chip_mascota" id="chip_mascota" maxlength="15" class="form-control input-sm" placeholder="# Chip" <?php echo (isset($mascota['chip_mascota']))?'value="'.$mascota['chip_mascota'].'"':''; ?> data-validation="custom" data-validation-regexp="^\d{8}[A-Z]$" data-validation-error-msg="Introduzca un NIF correcto." />
+                    <input type="text" name="chip_mascota" id="chip_mascota" maxlength="15" class="form-control input-sm" placeholder="# Chip" <?php echo (isset($mascota['chip_mascota']))?'value="'.$mascota['chip_mascota'].'"':''; ?> data-validation="custom" data-validation-regexp="^\d{15}$" data-validation-error-msg="Introduzca un nº chip de 15 dígitos." />
                 </div>
                 <div class="form-group col-md-3 col-md-offset-4">
                     <label for="falta_mascota">FECHA ALTA:</label>
-                    <input type="text" name="falta_mascota" id="falta_mascota" class="form-control calendario input-sm" placeholder="DD/MM/AAAA" <?php echo (isset($mascota['falta_mascota']))?'value="'.formatear_fecha($mascota['falta_mascota']).'"':''; ?> <?php echo (isset($_GET['visualizar']))?'readonly':''; ?> />
+                    <input type="text" name="falta_mascota" id="falta_mascota" class="form-control calendario input-sm" placeholder="DD/MM/AAAA" <?php echo (isset($mascota['falta_mascota']))?'value="'.formatear_fecha($mascota['falta_mascota']).'"':''; ?> <?php echo (isset($_GET['visualizar']))?'readonly':''; ?> data-validation="date" data-validation-format="dd/mm/yyyy" data-validation-error-msg="Introduzca una fecha alta correcta." data-validation-optional="true" />
                 </div>
             </div>
             <div class="row">
@@ -23,11 +23,11 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="raza_mascota">RAZA:</label>
-                    <input type="text" name="raza_mascota" id="raza_mascota" class="form-control input-sm" placeholder="Raza" <?php echo (isset($mascota['raza_mascota']))?'value="'.$mascota['raza_mascota'].'"':''; ?> data-validation="custom" data-validation-regexp="^\d{8}[A-Z]$" data-validation-error-msg="Introduzca un NIF correcto." />
+                    <input type="text" name="raza_mascota" id="raza_mascota" class="form-control input-sm" placeholder="Raza" <?php echo (isset($mascota['raza_mascota']))?'value="'.$mascota['raza_mascota'].'"':''; ?> data-validation="custom" data-validation-regexp="^[a-zñáéíóúA-ZÑÁÉÍÓÚÜ]+(\s[a-zñáéíóúüA-ZÑÁÉÍÓÚÜ]+)*$" data-validation-error-msg="Introduzca una raza correcta." />
                 </div>
                 <div class="form-group col-md-3 col-md-offset-1">
                     <label for="fnac_mascota">FECHA NAC.:</label>
-                    <input type="text" name="fnac_mascota" id="fnac_mascota" class="form-control calendario input-sm" placeholder="DD/MM/AAAA" <?php echo (isset($mascota['fnac_mascota']))?'value="'.formatear_fecha($mascota['fnac_mascota']).'"':''; ?> data-validation="date" data-validation-format="dd/mm/yyyy" data-validation-error-msg="Introduzca una fecha correcta." />
+                    <input type="text" name="fnac_mascota" id="fnac_mascota" class="form-control calendario input-sm" placeholder="DD/MM/AAAA" <?php echo (isset($mascota['fnac_mascota']))?'value="'.formatear_fecha($mascota['fnac_mascota']).'"':''; ?> data-validation="date" data-validation-format="dd/mm/yyyy" data-validation-error-msg="Introduzca una fecha nacimiento correcta." />
                 </div>
             </div>
             <div class="row">
@@ -37,7 +37,7 @@
                         <div class="col-md-5">
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <input type="radio" id="sexo_mascota_h" value="hembra" name="genero_mascota" <?php echo (isset($mascota['sexo_mascota']) && $mascota['sexo_mascota']=='f')?'checked':''; ?> /> 
+                                    <input type="radio" id="sexo_mascota_h" value="hembra" name="genero_mascota" <?php echo (isset($mascota['genero_mascota']) && $mascota['genero_mascota']=='hembra')?'checked':''; ?> data-validation="required" /> 
                                 </span>
                                 <div class="form-control input-sm">
                                     <label for="sexo_mascota_h">Hembra</label>
@@ -47,7 +47,7 @@
                         <div class="col-md-5 col-md-offset-1">
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <input type="radio" id="sexo_mascota_m" value="macho" name="genero_mascota" <?php echo (isset($mascota['sexo_mascota']) && $mascota['sexo_mascota']=='m')?'checked':''; ?> />
+                                    <input type="radio" id="sexo_mascota_m" value="macho" name="genero_mascota" <?php echo (isset($mascota['genero_mascota']) && $mascota['genero_mascota']=='macho')?'checked':''; ?> data-validation="required" />
                                 </span>
                                 <div class="form-control input-sm">
                                     <label for="sexo_mascota_m">Macho</label>
@@ -58,13 +58,13 @@
                 </div>
                 <div class="form-group col-md-2">
                     <label for="peso_mascota">PESO:</label>
-                    <input type="text" name="peso_mascota" id="peso_mascota" class="form-control input-sm" placeholder="Peso (x.x) kgs." <?php echo (isset($mascota['peso_mascota']))?'value="'.$mascota['peso_mascota'].'"':''; ?> data-validation="custom" data-validation-regexp="^\d{8}[A-Z]$" data-validation-error-msg="Introduzca un NIF correcto." />
+                    <input type="text" name="peso_mascota" id="peso_mascota" class="form-control input-sm" placeholder="Peso (xx.xxx) kgs." <?php echo (isset($mascota['peso_mascota']))?'value="'.$mascota['peso_mascota'].'"':''; ?> data-validation="custom" data-validation-regexp="^\d{1,2}([.]\d{1,3})?$" data-validation-error-msg="Introduzca un peso correcto." data-validation-optional="true" />
                 </div>
                 <div class="form-group col-md-4 col-md-offset-1">
                     <label for="librovac_mascota">&nbsp;</label>
                     <div class="input-group">
                         <span class="input-group-addon">
-                            <input type="checkbox" id="librovac_mascota" value="1" name="librovac_mascota" <?php echo (isset($mascota['sexo_mascota']) && $mascota['sexo_mascota']=='f')?'checked':''; ?> /> 
+                            <input type="checkbox" id="librovac_mascota" value="1" name="librovac_mascota" <?php echo (isset($mascota['librovac_mascota']) && $mascota['librovac_mascota']==1)?'checked':''; ?> /> 
                         </span>
                         <div class="form-control input-sm">
                             <label for="librovac_mascota">CARTILLA VACUNAS</label>
@@ -76,9 +76,9 @@
         <div class="col-md-3">
             <div class="thumbnail">
                 <?php
-                    if (isset($mascota['id_mascota']) && file_exists(Mascota::$url_foto.$mascota['id_mascota'].".jpg")){
+                    if (isset($mascota['id_mascota']) && file_exists(Mascota::$url_fotos.$mascota['id_mascota'].".jpg")){
                         $url=Mascota::$url_fotos.$mascota['id_mascota'].".jpg";
-                        $title=$mascota['nombre_mascota'];
+                        $title=$mascota['nombre_mascota']." - ".$mascota['raza_mascota']." - ".formatear_fecha($mascota['fnac_mascota']);
                         $alt=$mascota['id_mascota'].".jpg";
                     } else {
                         $url=Mascota::$url_fotos."no_photo.jpg";
@@ -91,7 +91,8 @@
                 </a>
                 <div class="fileUpload btn btn-info btn-sm center-block">
                     <span><i class="fa fa-camera fa-lg"></i>&nbsp;&nbsp;ADJUNTAR</span>
-                    <input id="btn-add-photo" type="file" class="upload" name="foto_mascota" />
+                    <input id="btn-add-photo" type="file" class="upload" name="foto_mascota" data-validation="mime size" data-validation-allowing="jpg, png" 
+		 data-validation-max-size="1M" data-validation-optional="true" data-validation-error-msg="Seleccione archivo JPG/PNG menor de 1024Kb." />
                 </div>
                 <input id="url-add-photo" class="form-control" placeholder="Choose File" disabled="disabled" />
             </div>
@@ -213,7 +214,7 @@
     <div class="form-group">
         <?php if (isset($_GET['visualizar'])): ?>
             <button type="submit" name="modificar" title="GUARDAR" class="btn btn-success"><i class="fa fa-floppy-o fa-lg"></i>&nbsp; GUARDAR</button>
-            <a href="./clientes.php" title="VOLVER" class="btn btn-primary"><i class="fa fa-undo fa-lg"></i> VOLVER</a>
+            <a href="./mascotas.php" title="VOLVER" class="btn btn-primary"><i class="fa fa-undo fa-lg"></i> VOLVER</a>
         <?php else: ?>
             <button type="submit" name="alta" id="btn-alta" class="btn btn-primary"><i class="fa fa-user fa-lg"></i>&nbsp; ALTA NUEVA</button>
             <button type="submit" name="buscar" id="btn-buscar" class="btn btn-primary"><i class="fa fa-search fa-lg"></i>&nbsp; BUSCAR</button>

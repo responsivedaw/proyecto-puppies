@@ -24,7 +24,7 @@
                 <th>Fecha Alta</th>
             </tr>
             <tr>
-                <td><?php echo $ult_mascota; ?></td>
+                <td><?php echo $datos['id_mascota']; ?></td>
                 <td colspan="2"><?php echo $datos['nombre_mascota']; ?></td>
                 <td><?php echo $datos['chip_mascota']; ?></td>
                 <td><?php echo $datos['id_cliente']; ?></td>
@@ -53,6 +53,6 @@
         </table>
         </div>
         <div class="line-break"></div>
-        <p class="center-block"><a href="./clientes.php" title="VOLVER" class="btn btn-success"><i class="fa fa-undo fa-lg"></i> VOLVER</a></p>
+        <p class="center-block"><a href="./mascotas.php" title="VOLVER" class="btn btn-success"><i class="fa fa-undo fa-lg"></i> VOLVER</a></p>
     </div>
 </div>

@@ -64,27 +64,6 @@
                             }
                         } elseif (isset($_POST['buscar'])){
                             $resultados=Cliente::buscar($_POST);
-                            var_dump($resultados);
-                            var_dump($resultados);
-                            var_dump($resultados);
-                            var_dump($resultados);
-                            var_dump($resultados);
-                            var_dump($resultados);
-                            var_dump($resultados);
-                            var_dump($resultados);
-                            var_dump($resultados);
-                            var_dump($resultados);
-                            var_dump($resultados);
-                            var_dump($resultados);
-                            var_dump($resultados);
-                            var_dump($resultados);
-                            var_dump($resultados);
-                            var_dump($resultados);
-                            var_dump($resultados);
-                            var_dump($resultados);
-                            var_dump($resultados);
-                            var_dump($resultados);
-                            var_dump($resultados);
                             if (sizeof($resultados)==0){
                                 include "./plantillas/clientes_error_busqueda.php";
                             } else {

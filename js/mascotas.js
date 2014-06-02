@@ -5,16 +5,17 @@ $(document).ready(function(){
     //    $("#url-add-photo").val($(this).val());
     //    $('#img-frame').attr('src',$(this).val());
     //});
-    /*$.validate({
+    $.validate({
         form : '#mascotas',
         scrollToTopOnError: true,
         validateOnBlur: true,
-        errorMessagePosition: 'top'
-    });*/
+        errorMessagePosition: 'top',
+        modules : 'file'
+    });
     // Eliminamos la validacion para el boton BUSCAR. Eliminamos todos los atributos de validacion cuando pulsamos buscar.
     $('#btn-buscar').click(function() {
         //var $form = $(this).closest('form');
-        var $form=$('#clientes');
+        var $form=$('#mascotas');
         $form.find('*[data-validation]').attr('data-validation', null);
         $form.get(0).submit();
     });
@@ -42,4 +43,9 @@ $(document).ready(function(){
         $.datepicker.setDefaults($.datepicker.regional['es']);
     });
     $('.calendario').datepicker();
+    $('#id_cliente').change(function(e){
+        var cliente=$(this).val();
+        
+        //Ajax para recuperar datos cliente.
+    });
 });

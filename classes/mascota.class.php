@@ -59,12 +59,12 @@ class Mascota{
     public function insertar(){
         $conn=conexion_puppiesdb();
         $query="INSERT INTO mascotas VALUES (null,";
-        $query.="'{$this->nombre_mascota}',";
-        $query.="'{$this->raza_mascota}',";
-        $query.="'{$this->chip_mascota}',";
+        $query.="'".mysqli_real_escape_string($conn,$this->nombre_mascota)."',";
+        $query.="'".mysqli_real_escape_string($conn,$this->raza_mascota)."',";
+        $query.="'".mysqli_real_escape_string($conn,$this->chip_mascota)."',";
         $query.="'".formatear_fecha($this->fnac_mascota)."',";
         $query.="'".formatear_fecha($this->falta_mascota)."',";
-        $query.="{$this->peso_mascota},";
+        $query.=mysqli_real_escape_string($conn,$this->peso_mascota).",";
         $query.="'{$this->genero_mascota}',";
         $query.="'".htmlentities($this->notas_mascota)."',";
         $query.="{$this->librovac_mascota},";
@@ -92,22 +92,23 @@ class Mascota{
     public static function buscar($datos){
         //var_dump($datos);
         //La invocamos como Mascota::buscar($datos) siendo $datos los recogidos por el formulario.
-        $query="SELECT * FROM mascotas WHERE 1";
+        $conn=conexion_puppiesdb();
+        $query="SELECT mascotas.*,clientes.nombre_cliente,clientes.apellidos_cliente FROM mascotas,clientes WHERE clientes.id_cliente=mascotas.id_cliente";
         //Si le pasamos un array hacemos una busqueda normal, pero hacemos que podamos pasar solo un id para la busqueda.
         if (!is_array($datos)){
             $query.=" AND id_mascota={$datos}";
         } else {
             if ($datos['id_mascota']!=""){
-                $query.=" AND id_mascota={$datos['id_mascota']}";
+                $query.=" AND id_mascota=".mysqli_real_escape_string($conn,$datos['id_mascota']);
             }
             if ($datos['nombre_mascota']!=""){
-                $query.=" AND nombre_mascota LIKE '%{$datos['nombre_mascota']}%'";
+                $query.=" AND nombre_mascota LIKE '%".mysqli_real_escape_string($conn,$datos['nombre_mascota'])."%'";
             }
             if ($datos['raza_mascota']!=""){
-                $query.=" AND raza_mascota LIKE '%{$datos['raza_mascota']}%'";
+                $query.=" AND raza_mascota LIKE '%".mysqli_real_escape_string($conn,$datos['raza_mascota'])."%'";
             }
             if ($datos['chip_mascota']!=""){
-                $query.=" AND chip_mascota='{$datos['chip_mascota']}'";
+                $query.=" AND chip_mascota='".mysqli_real_escape_string($conn,$datos['chip_mascota'])."'";
             }
             if (validar_fecha($datos['fnac_mascota'])){
                 $query.=" AND fnac_mascota='".formatear_fecha($datos['fnac_mascota'])."'";
@@ -121,89 +122,51 @@ class Mascota{
             if (isset($datos['librovac_mascota'])){
                 $query.=" AND librovac_mascota='{$datos['librovac_mascota']}'";
             }
-            if ($datos['direccion_cliente']!=""){
-                $query.=" AND direccion_cliente LIKE '%{$datos['direccion_cliente']}%'";
-            }
-            //Cuidado con el codigo postal, la localidad y la provincia pq habra que hacer un JOIN con localidades
-            if ($datos['cpostal_cliente']!=""){
-                $query.=" AND cpostal_cliente LIKE '%{$datos['cpostal_cliente']}%'";
-            }
-            if ($datos['tfno1_cliente']!=""){
-                $query.=" AND tfno1_cliente LIKE '%{$datos['tfno1_cliente']}%'";
-            }
-            if ($datos['tfno2_cliente']!=""){
-                $query.=" AND tfno2_cliente LIKE '%{$datos['tfno2_cliente']}%'";
-            }
             if ($datos['id_cliente']!=""){
-                $query.=" AND id_cliente='{$datos['id_cliente']}'";
+                $query.=" AND id_cliente={$datos['id_cliente']}";
             }
         }       
-        $query.=" AND activo_cliente=1;";
-        $conn=conexion_puppiesdb();
+        $query.=" AND activo_mascota=1 ORDER BY mascotas.id_mascota ASC;";
+        
         $result=mysqli_query($conn,$query) or die ("Error en consulta: ".mysqli_error($conn));
         $resultados=array();    //Aqui iremos añadiendo cada una de las filas de la consulta.
         while ($fila=mysqli_fetch_assoc($result)){
             $resultados[]=$fila;
         }
+        mysqli_close($conn);
         return $resultados;
         // Devolvemos el array con los resultados.
         // Donde invoquemos a la funcion comprobaremos la longitud del array y tendremos el nº resultados.
         // Quiza tambien podriamos devolver solo un array con los ids.
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     public function modificar(){
         //echo 'modificamos';
         //Previamente construimos un objeto cliente con los datos del formulario.
         //Si los datos son válidos, llamamos a este método.
         $conn=conexion_puppiesdb();
-        $query="UPDATE clientes SET";
-        $query.=" nombre_cliente='".$this->nombre_cliente."'";
-        $query.=" ,apellidos_cliente='".$this->apellidos_cliente."'";
-        $query.=" ,nif_cliente='".$this->nif_cliente."'";
-        $query.=" ,fnac_cliente='".formatear_fecha($this->fnac_cliente)."'";
-        $query.=" ,falta_cliente='".formatear_fecha($this->falta_cliente)."'";
-        $query.=" ,direccion_cliente='".$this->direccion_cliente."'";
-        $query.=" ,cpostal_cliente='".$this->cpostal_cliente."'";
-        $query.=" ,sexo_cliente='".$this->sexo_cliente."'";
-        $query.=" ,tfno1_cliente='".$this->tfno1_cliente."'";
-        $query.=" ,tfno2_cliente='".$this->tfno2_cliente."'";
-        $query.=" ,email_cliente='".$this->email_cliente."'";
-        $query.=" ,mailing_cliente=$this->mailing_cliente";
-        $query.=" ,notas_cliente='".$this->notas_cliente."'";
+        $query="UPDATE mascotas SET";
+        $query.=" nombre_mascota='".mysqli_real_escape_string($conn,$this->nombre_mascota)."'";
+        $query.=" ,raza_mascota='".mysqli_real_escape_string($conn,$this->raza_mascota)."'";
+        $query.=" ,chip_mascota='".mysqli_real_escape_string($conn,$this->chip_mascota)."'";
+        $query.=" ,fnac_mascota='".formatear_fecha($this->fnac_mascota)."'";
+        $query.=" ,falta_mascota='".formatear_fecha($this->falta_mascota)."'";
+        $query.=" ,id_cliente=".$this->id_cliente;
+        $query.=" ,genero_mascota='".$this->genero_mascota."'";
+        $query.=" ,librovac_mascota='".$this->librovac_mascota."'";
+        $query.=" ,peso_mascota=".mysqli_real_escape_string($conn,$this->peso_mascota);
+        $query.=" ,notas_mascota='".mysqli_real_escape_string($conn,$this->notas_mascota)."'";
         $query.=" ,id_usuario=".$_SESSION['id_usuario'];
-        $query.=" WHERE id_cliente=".$this->id_cliente.";";
+        $query.=" WHERE id_mascota=".$this->id_mascota.";";
         //var_dump($query);
         $result=mysqli_query($conn,$query) or die ("Error en la actualizacion: ".mysqli_error($conn));
         mysqli_close($conn);
+        if (isset($_FILES['foto_mascota'])){
+            if ($_FILES['foto_mascota']['size']<=1024000 && $_FILES['foto_mascota']['type']=="image/jpeg"){
+                $origen=$_FILES['foto_mascota']['tmp_name'];
+                $destino=self::$url_fotos.$this->id_mascota.".jpg";
+                move_uploaded_file($origen,$destino);
+            }
+        }
         return $this->id_cliente;   //Lo devolvemos para cargar de nuevo el formulario con los datos actualizados.
     }
     public static function borrar($id_cliente){ // La invocaremos como Cliente::borrar_cliente($id_cliente)
@@ -211,12 +174,11 @@ class Mascota{
         // $query="DELETE FROM clientes WHERE id_cliente=$id_cliente;";
         // Version pasamos a inactivo.
         // Actualizamos tambien el id_usuario que realiza la modificacion para el tema de los triggers.
-        $query="UPDATE clientes SET activo_cliente=0,id_usuario={$_SESSION['id_usuario']} WHERE id_cliente=$id_cliente;";
+        $query="UPDATE mascotas SET activo_mascota=0,id_usuario={$_SESSION['id_usuario']} WHERE id_mascota=$id_cliente;";
         $conn=conexion_puppiesdb();
         $result=mysqli_query($conn,$query) or die ("Error en INACTIVO: ".mysqli_error($conn));
         mysqli_close($conn);
     }
-    
     public function to_array(){
         //Convertimos un objeto en un array asociativo
         $datos=get_object_vars($this);
