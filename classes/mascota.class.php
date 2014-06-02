@@ -89,8 +89,67 @@ class Mascota{
         }
         return $ultimo;
     }
-    
-    
+    public static function buscar($datos){
+        //var_dump($datos);
+        //La invocamos como Mascota::buscar($datos) siendo $datos los recogidos por el formulario.
+        $query="SELECT * FROM mascotas WHERE 1";
+        //Si le pasamos un array hacemos una busqueda normal, pero hacemos que podamos pasar solo un id para la busqueda.
+        if (!is_array($datos)){
+            $query.=" AND id_mascota={$datos}";
+        } else {
+            if ($datos['id_mascota']!=""){
+                $query.=" AND id_mascota={$datos['id_mascota']}";
+            }
+            if ($datos['nombre_mascota']!=""){
+                $query.=" AND nombre_mascota LIKE '%{$datos['nombre_mascota']}%'";
+            }
+            if ($datos['raza_mascota']!=""){
+                $query.=" AND raza_mascota LIKE '%{$datos['raza_mascota']}%'";
+            }
+            if ($datos['chip_mascota']!=""){
+                $query.=" AND chip_mascota='{$datos['chip_mascota']}'";
+            }
+            if (validar_fecha($datos['fnac_mascota'])){
+                $query.=" AND fnac_mascota='".formatear_fecha($datos['fnac_mascota'])."'";
+            }
+            if (validar_fecha($datos['falta_mascota'])){
+                $query.=" AND falta_mascota='".formatear_fecha($datos['falta_mascota'])."'";
+            }
+            if (isset($datos['genero_mascota'])){
+                $query.=" AND genero_mascota='{$datos['genero_mascota']}'";
+            }
+            if (isset($datos['librovac_mascota'])){
+                $query.=" AND librovac_mascota='{$datos['librovac_mascota']}'";
+            }
+            if ($datos['direccion_cliente']!=""){
+                $query.=" AND direccion_cliente LIKE '%{$datos['direccion_cliente']}%'";
+            }
+            //Cuidado con el codigo postal, la localidad y la provincia pq habra que hacer un JOIN con localidades
+            if ($datos['cpostal_cliente']!=""){
+                $query.=" AND cpostal_cliente LIKE '%{$datos['cpostal_cliente']}%'";
+            }
+            if ($datos['tfno1_cliente']!=""){
+                $query.=" AND tfno1_cliente LIKE '%{$datos['tfno1_cliente']}%'";
+            }
+            if ($datos['tfno2_cliente']!=""){
+                $query.=" AND tfno2_cliente LIKE '%{$datos['tfno2_cliente']}%'";
+            }
+            if ($datos['id_cliente']!=""){
+                $query.=" AND id_cliente='{$datos['id_cliente']}'";
+            }
+        }       
+        $query.=" AND activo_cliente=1;";
+        $conn=conexion_puppiesdb();
+        $result=mysqli_query($conn,$query) or die ("Error en consulta: ".mysqli_error($conn));
+        $resultados=array();    //Aqui iremos añadiendo cada una de las filas de la consulta.
+        while ($fila=mysqli_fetch_assoc($result)){
+            $resultados[]=$fila;
+        }
+        return $resultados;
+        // Devolvemos el array con los resultados.
+        // Donde invoquemos a la funcion comprobaremos la longitud del array y tendremos el nº resultados.
+        // Quiza tambien podriamos devolver solo un array con los ids.
+    }
     
     
     
@@ -157,67 +216,7 @@ class Mascota{
         $result=mysqli_query($conn,$query) or die ("Error en INACTIVO: ".mysqli_error($conn));
         mysqli_close($conn);
     }
-    public static function buscar($datos){
-        //var_dump($datos);
-        //La invocamos como Cliente::buscar_cliente($datos) siendo $datos los recogidos por el formulario.
-        $query="SELECT * FROM clientes WHERE 1";
-        //Si le pasamos un array hacemos una busqueda normal, pero hacemos que podamos pasar solo un id para la busqueda.
-        if (!is_array($datos)){
-            $query.=" AND id_cliente={$datos}";
-        } else {
-            if ($datos['id_cliente']!=""){
-                $query.=" AND id_cliente={$datos['id_cliente']}";
-            }
-            if ($datos['nombre_cliente']!=""){
-                $query.=" AND nombre_cliente LIKE '%{$datos['nombre_cliente']}%'";
-            }
-            if ($datos['apellidos_cliente']!=""){
-                $query.=" AND apellidos_cliente LIKE '%{$datos['apellidos_cliente']}%'";
-            }
-            if ($datos['nif_cliente']!=""){
-                $query.=" AND nif_cliente='{$datos['nif_cliente']}'";
-            }
-            if (validar_fecha($datos['fnac_cliente'])){
-                $query.=" AND fnac_cliente='".formatear_fecha($datos['fnac_cliente'])."'";
-            }
-            if (validar_fecha($datos['falta_cliente'])){
-                $query.=" AND falta_cliente='".formatear_fecha($datos['falta_cliente'])."'";
-            }
-            if (isset($datos['sexo_cliente'])){
-                $query.=" AND sexo_cliente='{$datos['sexo_cliente']}'";
-            }
-            if (isset($datos['mailing_cliente'])){
-                $query.=" AND mailing_cliente='{$datos['mailing_cliente']}'";
-            }
-            if ($datos['direccion_cliente']!=""){
-                $query.=" AND direccion_cliente LIKE '%{$datos['direccion_cliente']}%'";
-            }
-            //Cuidado con el codigo postal, la localidad y la provincia pq habra que hacer un JOIN con localidades
-            if ($datos['cpostal_cliente']!=""){
-                $query.=" AND cpostal_cliente LIKE '%{$datos['cpostal_cliente']}%'";
-            }
-            if ($datos['tfno1_cliente']!=""){
-                $query.=" AND tfno1_cliente LIKE '%{$datos['tfno1_cliente']}%'";
-            }
-            if ($datos['tfno2_cliente']!=""){
-                $query.=" AND tfno2_cliente LIKE '%{$datos['tfno2_cliente']}%'";
-            }
-            if ($datos['email_cliente']!=""){
-                $query.=" AND email_cliente='{$datos['email_cliente']}'";
-            }
-        }       
-        $query.=" AND activo_cliente=1;";
-        $conn=conexion_puppiesdb();
-        $result=mysqli_query($conn,$query) or die ("Error en consulta: ".mysqli_error($conn));
-        $resultados=array();    //Aqui iremos añadiendo cada una de las filas de la consulta.
-        while ($fila=mysqli_fetch_assoc($result)){
-            $resultados[]=$fila;
-        }
-        return $resultados;
-        // Devolvemos el array con los resultados.
-        // Donde invoquemos a la funcion comprobaremos la longitud del array y tendremos el nº resultados.
-        // Quiza tambien podriamos devolver solo un array con los ids.
-    }
+    
     public function to_array(){
         //Convertimos un objeto en un array asociativo
         $datos=get_object_vars($this);
