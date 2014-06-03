@@ -86,7 +86,7 @@
                         $alt="no_photo.jpg";
                     }
                 ?>
-                <a href="<?php echo $url; ?>" data-lightbox="image-1" data-title="<?php echo $title; ?>">
+                <a href="<?php echo $url; ?>" data-lightbox="image-1" data-title="<?php echo $title; ?>" title="<?php echo $title; ?>" id="img-link">
                 <img alt="<?php echo $alt; ?>" src="<?php echo $url; ?>" title="<?php echo $title; ?>" class="img-rounded" id="img-frame" data-lightbox="image-1" data-title="PLUTO" />
                 </a>
                 <div class="fileUpload btn btn-info btn-sm center-block">
