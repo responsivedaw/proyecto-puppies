@@ -208,7 +208,7 @@
     <div class="line-break"></div>
     <div class="form-group">
         <label for="notas_mascota">OBSERVACIONES</label>
-        <textarea name="notas_mascota" class="form-control" placeholder="Introduzca observaciones ..." rows="5"><?php echo (isset($mascota['notas_mascota']))?$mascota['notas_mascota']:''; ?></textarea>
+        <textarea name="notas_mascota" id="notas_mascota" class="form-control" placeholder="Introduzca observaciones ..." rows="5"><?php echo (isset($mascota['notas_mascota']))?$mascota['notas_mascota']:''; ?></textarea>
     </div>
     <div class="line-break"></div>
     <div class="form-group">

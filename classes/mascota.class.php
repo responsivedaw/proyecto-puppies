@@ -98,22 +98,22 @@ class Mascota{
         if (!is_array($datos)){
             $query.=" AND id_mascota={$datos}";
         } else {
-            if ($datos['id_mascota']!=""){
+            if (isset($datos['id_mascota']) && $datos['id_mascota']!=""){
                 $query.=" AND id_mascota=".mysqli_real_escape_string($conn,$datos['id_mascota']);
             }
-            if ($datos['nombre_mascota']!=""){
+            if (isset($datos['nombre_mascota']) && $datos['nombre_mascota']!=""){
                 $query.=" AND nombre_mascota LIKE '%".mysqli_real_escape_string($conn,$datos['nombre_mascota'])."%'";
             }
-            if ($datos['raza_mascota']!=""){
+            if (isset($datos['raza_mascota']) && $datos['raza_mascota']!=""){
                 $query.=" AND raza_mascota LIKE '%".mysqli_real_escape_string($conn,$datos['raza_mascota'])."%'";
             }
-            if ($datos['chip_mascota']!=""){
+            if (isset($datos['chip_mascota']) && $datos['chip_mascota']!=""){
                 $query.=" AND chip_mascota='".mysqli_real_escape_string($conn,$datos['chip_mascota'])."'";
             }
-            if (validar_fecha($datos['fnac_mascota'])){
+            if (isset($datos['fnac_mascota']) && validar_fecha($datos['fnac_mascota'])){
                 $query.=" AND fnac_mascota='".formatear_fecha($datos['fnac_mascota'])."'";
             }
-            if (validar_fecha($datos['falta_mascota'])){
+            if (isset($datos['falta_mascota']) && validar_fecha($datos['falta_mascota'])){
                 $query.=" AND falta_mascota='".formatear_fecha($datos['falta_mascota'])."'";
             }
             if (isset($datos['genero_mascota'])){
@@ -122,12 +122,12 @@ class Mascota{
             if (isset($datos['librovac_mascota'])){
                 $query.=" AND librovac_mascota='{$datos['librovac_mascota']}'";
             }
-            if ($datos['id_cliente']!=""){
-                $query.=" AND id_cliente={$datos['id_cliente']}";
+            if (isset($datos['id_cliente']) && $datos['id_cliente']!=""){
+                $query.=" AND mascotas.id_cliente={$datos['id_cliente']}";
             }
         }       
         $query.=" AND activo_mascota=1 ORDER BY mascotas.id_mascota ASC;";
-        
+        //var_dump($query);
         $result=mysqli_query($conn,$query) or die ("Error en consulta: ".mysqli_error($conn));
         $resultados=array();    //Aqui iremos añadiendo cada una de las filas de la consulta.
         while ($fila=mysqli_fetch_assoc($result)){

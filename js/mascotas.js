@@ -1,10 +1,25 @@
 ;
 
 $(document).ready(function(){
-    //$("#btn-add-photo").change(function(){
-    //    $("#url-add-photo").val($(this).val());
-    //    $('#img-frame').attr('src',$(this).val());
-    //});
+    //Recuperamos los datos del cliente asociado a una mascota.
+    $('#id_cliente').change(function(){
+        var datos=$('#id_cliente').val();
+        $.ajax({
+			url:"./ajax/cliente_mascota.php",
+			type: "post",
+			async: true,
+			data: {id_cliente:datos},
+			success: function(ajax_data){
+                if (ajax_data==0){
+                    alert("No devuelve cliente");
+                } else {
+                    var cliente=JSON.parse(ajax)
+                }
+                
+                $('.form-mascotas').append(ajax_data);
+            }
+		});
+    });
     $.validate({
         form : '#mascotas',
         scrollToTopOnError: true,
@@ -51,7 +66,7 @@ $(document).ready(function(){
     $('#btn-add-photo').change(function(e){
         //Vista previa de la imagen a subir.
         var formData=new FormData($('#mascotas')[0]);
-        var url="./ajax/vista_previa_imagen.php";
+        var url = "./ajax/vista_previa_imagen.php";
         $.ajax({
             url: url,
             type: 'POST',

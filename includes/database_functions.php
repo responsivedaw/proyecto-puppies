@@ -52,5 +52,17 @@
 			return false;
 		}
 	}
+	
+	function get_cliente($id_cliente){
+		$conn=conexion_puppiesdb();
+		$query="SELECT * FROM clientes WHERE id_cliente={$id_cliente};";
+		if ($result=mysqli_query($conn,$query)){
+			$cliente=mysqli_fetch_assoc($result);
+			mysqli_close($conn);
+			return $cliente;
+		} else {
+			return 0;
+		}
+	}
 
 ?>

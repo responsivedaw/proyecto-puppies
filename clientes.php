@@ -38,6 +38,8 @@
                                 // Despues de mostrar los resultados, llegamos con el id seleccionado.
                                 $resultados=Cliente::buscar($_GET['id_cliente']);
                                 $cliente=$resultados[0];
+                                $mascotas=Mascota::buscar($cliente);
+                                //var_dump($cliente);var_dump($mascotas);
                                 include "./plantillas/clientes_form_cliente.php";
                             } elseif (isset($_GET['borrar'])){
                                 // Recuperamos datos antes de eliminarlo para visualizarlo.

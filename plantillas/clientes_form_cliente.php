@@ -127,46 +127,33 @@
     <p><i class="fa fa-paw fa-lg"></i> <strong>MASCOTAS</strong> <i class="fa fa-paw fa-lg"></i></p>
     <div id="mascotas-cliente">
     <table class="table table-condensed col-md-10">
-        <tr>
-            <th class="col-md-1">#ID</th>
-            <th class="col-md-2">#CHIP</th>
-            <th class="col-md-1">NOMBRE</th>
-            <th class="col-md-1">RAZA</th>
-            <th class="col-md-1">SEXO</th>
-            <th class="col-md-1">VER FICHA</th>
-        </tr>
-        <tr>
-            <td>44</td>
-            <td>1235268265</td>
-            <td>Maeeeeeeeeeeya</td>
-            <td>Canieeeeeeeeeche</td>
-            <td>Hemeeeeeeeeebra</td>
-            <td><a href="" title="IR A FICHA" class="btn btn-success"><i class="fa fa-eye"></i></a></td>
-        </tr>
-        <tr>
-            <td>900</td>
-            <td>1235268265</td>
-            <td>Maya</td>
-            <td>Caniche</td>
-            <td>Hembra</td>
-            <td><a href="" title="IR A FICHA" class="btn btn-success"><i class="fa fa-eye"></i></a></td>
-        </tr>
-        <tr>
-            <td>4155</td>
-            <td>1235268265</td>
-            <td>Maya</td>
-            <td>Caniche</td>
-            <td>Hembra</td>
-            <td><a href="" title="IR A FICHA" class="btn btn-success"><i class="fa fa-eye"></i></a></td>
-        </tr>
-        <tr>
-            <td>4155</td>
-            <td>1235268265</td>
-            <td>Maya</td>
-            <td>Caniche</td>
-            <td>Hembra</td>
-            <td><a href="" title="IR A FICHA" class="btn btn-success"><i class="fa fa-eye"></i></a></td>
-        </tr>
+        <thead>
+            <tr>
+                <th class="col-md-1">#ID</th>
+                <th class="col-md-1">#CHIP</th>
+                <th class="col-md-2">NOMBRE</th>
+                <th class="col-md-2">RAZA</th>
+                <th class="col-md-1">SEXO</th>
+                <th class="col-md-1"></th>
+            </tr>
+        </thead>       
+        <tbody id="tabla-mascotas">
+            <?php
+                if (isset($mascotas)){
+                    foreach ($mascotas as $mascota){
+                        $salida="<tr>";
+                        $salida.="<td>{$mascota['id_mascota']}</td>"; 
+                        $salida.="<td>{$mascota['chip_mascota']}</td>"; 
+                        $salida.="<td>{$mascota['nombre_mascota']}</td>"; 
+                        $salida.="<td>{$mascota['raza_mascota']}</td>"; 
+                        $salida.="<td>".strtoupper($mascota['genero_mascota'])."</td>"; 
+                        $salida.="<td><a href='./mascotas.php?visualizar=true&id_mascota={$mascota['id_mascota']}' title='IR A FICHA' class='btn btn-success'><i class='fa fa-eye'></i>&nbsp;FICHA</a></td>"; 
+                        $salida.="</tr>";
+                        echo $salida;
+                    }
+                }           
+            ?>
+        </tbody>
     </table>
     </div>
     <div class="line-break"></div>
