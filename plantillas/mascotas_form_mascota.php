@@ -101,7 +101,7 @@
     <div class="line-break"></div>
     <div class="row">
         <div class="form-group col-md-2">
-            <label for="id_cliente">CLIENTE: </label>
+            <label for="id_cliente">CLIENTE: </label><img src="./images/ajax-loader.gif" id="ajax-loader-cliente" style="visibility: hidden; margin-left: 10px;" />
             <select name="id_cliente" id="id_cliente" class="form-control input-sm" data-validation="required" data-validation-error-msg="Seleccione un cliente.">
                 <option value=''>Código ...</option>
                 <!-- Recuperamos clientes de la DB. -->

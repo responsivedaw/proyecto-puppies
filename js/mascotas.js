@@ -9,14 +9,33 @@ $(document).ready(function(){
 			type: "post",
 			async: true,
 			data: {id_cliente:datos},
+            beforeSend: function(){
+                $('#ajax-loader-cliente').css("visibility","visible");  
+            },
 			success: function(ajax_data){
                 if (ajax_data==0){
-                    alert("No devuelve cliente");
+                    //alert("No devuelve cliente");
+                    $('#nombre_cliente').val("");
+                    $('#apellidos_cliente').val("");
+                    $('#nif_cliente').val("");
+                    $('#tfno1_cliente').val("");
+                    $('#tfno2_cliente').val("");
+                    $('#email_cliente').val("");
+                    $('#localidad_cliente').val("");
+                    $('#ajax-loader-cliente').css("visibility","hidden");
                 } else {
-                    var cliente=JSON.parse(ajax)
+                    var cliente=JSON.parse(ajax_data);
+                    //console.log(cliente);
+                    $('#nombre_cliente').val(cliente.nombre_cliente);
+                    $('#apellidos_cliente').val(cliente.apellidos_cliente);
+                    $('#nif_cliente').val(cliente.nif_cliente);
+                    $('#tfno1_cliente').val(cliente.tfno1_cliente);
+                    $('#tfno2_cliente').val(cliente.tfno2_cliente);
+                    $('#email_cliente').val(cliente.email_cliente);
+                    $('#localidad_cliente').val(cliente.cpostal_cliente);
+                    $('#ajax-loader-cliente').css("visibility","hidden");
                 }
-                
-                $('.form-mascotas').append(ajax_data);
+                //$('.form-mascotas').append(ajax_data);
             }
 		});
     });

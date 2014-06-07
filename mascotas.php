@@ -32,7 +32,7 @@
                     <img src="images/mascotas512.png" alt="mascotas" title="MASCOTAS" width="120" height="120">
                     <h1 class="img-title">MASCOTAS</h1>
                 </div>
-                <div class="col-md-10 clientes-content">
+                <div class="col-md-10 mascotas-content">
                     <?php
                     if (isset($_SESSION['id_usuario'])){
                         if (!$_POST){
