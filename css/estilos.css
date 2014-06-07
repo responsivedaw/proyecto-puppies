@@ -304,7 +304,148 @@ div#citas-mascota table tr td a{
     padding: 4px 8px;
 }
 
-/* ESTILOS PLANTILLAS */
+/* ARTICULOS.PHP */
+div.articulos-content{
+	border-radius: 6px;
+    box-shadow: 0px 0px 6px #262626;
+    background: #CFCFCF url(../images/pattern1.png);
+	padding: 20px;
+}
+div.form-articulos{
+    /*margin-bottom: 100px;*/
+    /*padding: 15px;*/
+    /*border:2px solid #000000;*/
+}
+div.form-articulos form{
+    font-size: 12px;
+}
+div.form-articulos form textarea{
+    resize: none;
+}
+div#pedidos-articulos{
+    height: 150px;
+    overflow: auto;
+    margin-bottom: 10px;
+}
+div#pedidos-articulos table{
+    background-color: #f9f9f9;
+    vertical-align: middle;
+    border-radius: 4px;
+}
+div#pedidos-articulos table tr td a{
+    padding: 4px 8px;
+}
+div#facturas-articulos{
+    height: 150px;
+    overflow: auto;
+    margin-bottom: 10px;
+}
+div#facturas-articulos table{
+    background-color: #f9f9f9;
+    vertical-align: middle;
+    border-radius: 4px;
+}
+div#facturas-articulos table tr td a{
+    padding: 4px 8px;
+}
+
+/* CATEGORIAS.PHP */
+div.categorias-content{
+	border-radius: 6px;
+    box-shadow: 0px 0px 6px #262626;
+    background: #CFCFCF url(../images/pattern1.png);
+	padding: 20px;
+}
+div.form-categorias{
+    /*margin-bottom: 100px;*/
+    /*padding: 15px;*/
+    /*border:2px solid #000000;*/
+}
+div.form-categorias form{
+    font-size: 12px;
+}
+div.form-categorias form textarea{
+    resize: none;
+}
+div#pedidos-categorias{
+    height: 150px;
+    overflow: auto;
+    margin-bottom: 10px;
+}
+div#pedidos-categorias table{
+    background-color: #f9f9f9;
+    vertical-align: middle;
+    border-radius: 4px;
+}
+div#pedidos-categorias table tr td a{
+    padding: 4px 8px;
+}
+
+/* PROVEEDORES.PHP */
+div.proveedores-content{
+	border-radius: 6px;
+    box-shadow: 0px 0px 6px #262626;
+    background: #CFCFCF url(../images/pattern1.png);
+	padding: 20px;
+}
+div.form-proveedores{
+    /*margin-bottom: 100px;*/
+    /*padding: 15px;*/
+    /*border:2px solid #000000;*/
+}
+div.form-proveedores form{
+    font-size: 12px;
+}
+div.form-proveedores form textarea{
+    resize: none;
+}
+div#pedidos-proveedores{
+    height: 150px;
+    overflow: auto;
+    margin-bottom: 10px;
+}
+div#pedidos-proveedores table{
+    background-color: #f9f9f9;
+    vertical-align: middle;
+    border-radius: 4px;
+}
+div#pedidos-proveedores table tr td a{
+    padding: 4px 8px;
+}
+
+
+div.img-form{
+    margin-bottom: 30px;
+    text-align: center;
+    /*border:2px solid #000000;
+    border-radius: 6px;*/
+}
+h1.img-title{
+    font-size: 20px;
+    margin:5px auto;
+    text-shadow: 2px 2px 2px #707070;
+}
+
+/* LISTADOS.PHP */
+div.listados-content{
+	border-radius: 6px;
+    box-shadow: 0px 0px 6px #262626;
+    background: #CFCFCF url(../images/pattern1.png);
+	padding: 20px;
+	margin-bottom:10px;
+}
+div.form-listados-cliente form{
+    font-size: 12px;
+}
+div.form-listados-mascota form{
+    font-size: 12px;
+}
+div.form-listados-articuloS form{
+    font-size: 12px;
+}
+
+
+/* ESTILOS PLANTILLAS GENERALES */
 
 div.session-error{
 	width: 90%;

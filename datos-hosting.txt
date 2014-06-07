@@ -1,0 +1,15 @@
+HOSTING WEB -- PUPPIES S.L.
+---------------------------
+
+SITIO: puppies.hol.es
+
+MYSQL-PHPMYADMIN: http://sql18.hostinger.es/phpmyadmin/index.php?db=u727096576_puppy&token=2f6c912235cc635a200c0ca42d93ec60
+SERVER: mysql.hostinger.es
+DB: u727096576_puppy
+USER: u727096576_puppy
+PW: pupp13s
+
+
+FTP: ftp.puppies.hol.es
+USER: u727096576
+PW: pupp13s

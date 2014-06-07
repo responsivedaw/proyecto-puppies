@@ -38,4 +38,8 @@
         $patron_chip="/^\d{15}$/";
         return preg_match($patron_chip,$chip);
     }
+    function validar_web($web){
+        $patron_web="/^http:\/\/www\.([\da-zñáéíóú]+).([a-z]+)$/";		
+        return preg_match($patron_web,$web);
+    }
 ?>

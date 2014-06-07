@@ -1,6 +1,7 @@
 <?php
     
-    require_once "funcionesArticulos.php";
+    require_once "./includes/database_functions.php";
+	require_once "./includes/validation_functions.php";
     
     class Articulo {
         //Atributos
@@ -17,83 +18,128 @@
         private $id_usuario;
         
         //Constructor
-        public function __construct($id,$denom,$notas,$stock,$prcompra,$prventa,$iva,$proveedor,$categoria,$usuario){
-            $this->id_articulo=$id;
-            $this->denom_articulo=$denom;
-            $this->notas_articulo=$notas;
-            $this->stock_articulo=$stock;
-            $this->prcompra_articulo=$prcompra;
-            $this->prventa_articulo=$prventa;
-            $this->iva_articulo=$iva;
-			$this->activo_articulo=1; //Por defecto la propiedad se activará al instanciar el objeto
-			$this->id_proveedor=$proveedor;
-			$this->id_categoria=$categoria;
-			$this->id_usuario=$usuario;
+        public function __construct($data){
+			$this->id_articulo=($data['id_articulo']!="")?$data['id_articulo']:null;
+			$this->denom_articulo=($data['denom_articulo']!="")?htmlentities($data['denom_articulo']):null;
+			$this->notas_articulo=($data['notas_articulo']!="")?htmlentities($data['notas_articulo']):null;
+            $this->stock_articulo=($data['stock_articulo']!="")?$data['stock_articulo']:0;
+            $this->prcompra_articulo=($data['prcompra_articulo']!="")?$data['prcompra_articulo']:0;
+            $this->prventa_articulo=($data['prventa_articulo']!="")?$data['prventa_articulo']:0;
+            $this->iva_articulo=($data['iva_articulo']!="")?$data['iva_articulo']:0;
+            $this->activo_articulo=(isset($data['activo_articulo']))?$data['activo_articulo']:1;
+			$this->id_proveedor=($data['id_proveedor']!="")?$data['id_proveedor']:null;
+			$this->id_categoria=($data['id_categoria']!="")?$data['id_categoria']:null;
+			$this->id_usuario=(isset($data['id_usuario']))?$data['id_usuario']:$_SESSION['id_usuario'];
         }
         
-        function validarFormArticulos($denom_articulo){
-            //var_dump($_POST);
-            $denom_articulo=$_POST['denom_articulo'];
-            
-            $errores="";
-            $cont=0;	
-            
-            if($denom_articulo==""){
-                $errores.="<p style='color:white;background-color:black;border:1px solid black;text-align:center'>Debe introducir un artículo</p>";
-                $cont++;	
-            }
-            
-            if($cont>0){
-                echo $errores;
-                formArticulos();
-                return false;
-            }else{
-                return true;
-            }
-        }//end fx Validar
+        public function validar_articulo(){   
+			$validaciones['denom_articulo']=validar_direccion($this->denom_articulo);
+			
+			if ($this->stock_articulo!=""){
+				$validaciones['stock_articulo']=validar_precio($this->stock_articulo);
+			}
+			if ($this->prcompra_articulo!=""){
+				$validaciones['prcompra_articulo']=validar_precio($this->prcompra_articulo);
+			}
+			if ($this->prventa_articulo!=""){
+				$validaciones['prventa_articulo']=validar_precio($this->prventa_articulo);
+			}
+			if ($this->iva_articulo!=""){
+				$validaciones['iva_articulo']=validar_entero($this->iva_articulo);
+			}
+			foreach ($validaciones as $value){
+				if ($value==false){
+					return false;
+				}
+			}
+			return true;
+		}
 
-        public function crearArticulo(){
-			echo"<br><br><br><br><br><br><br><br><br><br>"; //ELIMINAR CUANDO ESTEN LOS ESTILOS
-			$denom=$this->denom_articulo;
-			$notas=$this->notas_articulo;
-			$stock=$this->stock_articulo;
-			$prcompra=$this->prcompra_articulo;
-			$prventa=$this->prventa_articulo;
-			$iva=$this->iva_articulo;
-			$activo=$this->activo_articulo;
-			$proveedor=$this->id_proveedor;
-			$categoria=$this->id_categoria;
-			$usuario=$this->id_usuario;
-			
-			//echo "<br><br><br><br><br><br> $denom Este ess el proveedor $proveedor y la categoria $categoria   "; //ELIMINAR CUANDO ESTEN LOS ESTILOS
-			echo "<br><br><br><br><br><br> $denom $notas $stock $prcompra $prventa $iva $activo $proveedor $categoria $usuario  ";
-			/*echo $prcompra;
-			echo $usuario;
-			*/
-            $conn=conexion_puppiesdb();
-            //$query="INSERT INTO 'articulos' ('denom_articulo','notas_articulo','stock_articulo','prcompra_articulo','prventa_articulo','iva_articulo','proveedores_id_proovedor','categorias_id_categoria','usuarios_id_usuario) VALUES ('$denom','$notas','$stock','$prcompra','$prventa','$iva','$proveedor','$categoria','$usuario')";
-            $query='INSERT INTO articulos VALUES (NULL,"$denom","$notas","$stock","$prcompra","$prventa","$iva","$activo","$proveedor","$categoria","$usuario")';
-            
-            //DAVID:
-            // $query = "INSERT INTO articulos VALUES (null,'$denom','$notas',$stock,$prcompra,$prventa,$iva,$activo,$proveedor,$categoria,$usuario);";
-            // Los campos numericos (int-float-double-decimal-boolean) van sin comillas, las fechas y varchar o text van con comillas simples.
-            // Ademas si inicias la asignacion a la cadena con comillas simples no se evaluan las variables.
-			
-			//Dando valores sí la inserta: $query="INSERT INTO articulos VALUES (NULL,'sergio','articulo prueba', 5000, 500.12, 500, 500, 1, 1, 1, 1)";
-			
-			$result=mysqli_query($conn,$query) or die ("Error SQL: ".mysqli_error($conn));
-            mysqli_close($conn);
-            echo "La fila ha sido insertada";
-            
-        }
-        
-        public function modificarArticulo(){
-            echo "Se va a modificar un artículo";
-        }
-        
-        public function buscarArticulo(){
-            echo "Se va a buscar un artículo";
-        }
-        
-    }
-   
+        public function insertar_articulo(){
+			$query="INSERT INTO articulos VALUES (";
+			$query.="null,'$this->denom_articulo',";
+			$query.="'$this->notas_articulo',$this->stock_articulo,$this->prcompra_articulo,";
+			$query.="$this->prventa_articulo,$this->iva_articulo,$this->activo_articulo,";
+			$query.="$this->id_proveedor,$this->id_categoria,$this->id_usuario";
+			$query.=");";
+			$conn=conexion_puppiesdb();
+			$result=mysqli_query($conn,$query) or die ("Error Insercion: "+mysqli_error($conn));
+			$ultimo=mysqli_insert_id($conn);
+			mysqli_close($conn);
+			return $ultimo;
+		}
+		public function modificar_articulo(){
+			$query="UPDATE articulos SET";
+			$query.=" denom_articulo='".$this->denom_articulo."'";
+			$query.=" ,notas_articulo='".$this->notas_articulo."'";
+			$query.=" ,stock_articulo=".$this->stock_articulo;
+			$query.=" ,prcompra_articulo=".$this->prcompra_articulo;
+			$query.=" ,prventa_articulo=".$this->prventa_articulo;
+			$query.=" ,iva_articulo=".$this->iva_articulo;
+			$query.=" ,id_proveedor=".$this->id_proveedor;
+			$query.=" ,id_categoria=".$this->id_categoria;
+			$query.=" ,id_usuario=".$_SESSION['id_usuario'];
+			$query.=" WHERE id_articulo=".$this->id_articulo.";";
+			$conn=conexion_puppiesdb();
+			$result=mysqli_query($conn,$query) or die ("Error en la actualizacion: ".mysqli_error($conn));
+			mysqli_close($conn);
+			return $this->id_articulo;   
+		}
+		public static function borrar_articulo($id_articulo){ // La invocaremos como Articulo::borrar_articulo($id_articulo)
+			$query="UPDATE articulos SET activo_articulo=0,id_usuario={$_SESSION['id_usuario']} WHERE id_articulo=$id_articulo;";
+			$conn=conexion_puppiesdb();
+			$result=mysqli_query($conn,$query) or die ("Error en INACTIVO: ".mysqli_error($conn));
+			mysqli_close($conn);
+		}
+		public static function buscar_articulo($datos){
+			//La invocamos como Articulo::buscar_articulo($datos) siendo $datos los recogidos por el formulario.
+			$query="SELECT * FROM articulos WHERE 1";
+			if(!is_array($datos)){
+				$query.=" AND id_articulo={$datos}";
+			}else{
+				if ($datos['id_articulo']!=""){
+					$query.=" AND id_articulo={$datos['id_articulo']}";
+				}
+				if ($datos['denom_articulo']!=""){
+					$query.=" AND denom_articulo LIKE '%{$datos['denom_articulo']}%'";
+				}
+				if ($datos['stock_articulo']!=""){
+					$query.=" AND stock_articulo='{$datos['stock_articulo']}'";
+				}
+				if ($datos['prcompra_articulo']!=""){
+					$query.=" AND prcompra_articulo='{$datos['prcompra_articulo']}'";
+				}
+				if ($datos['prventa_articulo']!=""){
+					$query.=" AND prventa_articulo='{$datos['prventa_articulo']}'";
+				}
+				if ($datos['iva_articulo']!=""){
+					$query.=" AND iva_articulo='{$datos['iva_articulo']}'";
+				}
+				if (isset($datos['id_categoria']) && $datos['id_categoria']!=0){
+					$query.=" AND id_categoria='{$datos['id_categoria']}'";
+				}
+				if (isset($datos['id_proveedor']) && $datos['id_proveedor']!=0){
+					$query.=" AND id_proveedor='{$datos['id_proveedor']}'";
+				}
+			}
+			$query.=" AND activo_articulo=1";
+			$query.=";";
+			$conn=conexion_puppiesdb();
+			$result=mysqli_query($conn,$query) or die ("Error en consulta: ".mysqli_error($conn));
+			$resultados=array();    //Aqui iremos añadiendo cada una de las filas de la consulta.
+			while ($fila=mysqli_fetch_assoc($result)){
+				$resultados[]=$fila;
+			}
+			return $resultados;
+			// Devolvemos el array con los resultados.
+			// Donde invoquemos a la funcion comprobaremos la longitud del array y tendremos el nº resultados.
+			// Quiza tambien podriamos devolver solo un array con los ids.
+		}
+		
+		public function to_array(){
+			//Convertimos un objeto en un array asociativo
+			$datos=get_object_vars($this);
+			return $datos;
+		}
+	}
+?>
