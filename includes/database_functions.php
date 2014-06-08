@@ -43,7 +43,7 @@
 		$query="SELECT * FROM usuarios WHERE activo_usuario=1";
 		$query.=" AND usuario='".mysqli_real_escape_string($conn,$user)."'";
 		$query.=" AND pwd_usuario='".hash('sha1',$pass)."'";
-		var_dump($query);
+		//var_dump($query);
 		$result=mysqli_query($conn,$query) or die ("ERROR en la consulta de usuraio: ".mysqli_error($conn));
 		if (mysqli_num_rows($result)!=0){
 			$fila=mysqli_fetch_assoc($result);

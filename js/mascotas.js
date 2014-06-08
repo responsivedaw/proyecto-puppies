@@ -22,7 +22,8 @@ $(document).ready(function(){
                     $('#tfno2_cliente').val("");
                     $('#email_cliente').val("");
                     $('#localidad_cliente').val("");
-                    $('#ajax-loader-cliente').css("visibility","hidden");
+                    $('#link-cliente').attr("href","#");
+                    $('#ajax-loader-cliente').css("visibility","hidden");                    
                 } else {
                     var cliente=JSON.parse(ajax_data);
                     //console.log(cliente);
@@ -33,6 +34,7 @@ $(document).ready(function(){
                     $('#tfno2_cliente').val(cliente.tfno2_cliente);
                     $('#email_cliente').val(cliente.email_cliente);
                     $('#localidad_cliente').val(cliente.cpostal_cliente);
+                    $('#link-cliente').attr("href","./clientes.php?visualizar=true&id_cliente="+cliente.id_cliente);
                     $('#ajax-loader-cliente').css("visibility","hidden");
                 }
                 //$('.form-mascotas').append(ajax_data);

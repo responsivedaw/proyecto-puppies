@@ -32,9 +32,9 @@
                 <div class="col-md-10">
                     <div class="tabbable">
                         <ul class="nav nav-tabs" id="myTab">
-                            <li class="active"><a href="#anclaClientes" data-toggle="tab">CLIENTES</a></li>
-                            <li><a href="#anclaMascotas" data-toggle="tab">MASCOTAS</a></li>
-                            <li><a href="#anclaArticulos" data-toggle="tab">ARTICULOS</a></li>
+                            <li class="active"><a href="#ancla-clientes" data-toggle="tab">CLIENTES</a></li>
+                            <li><a href="#ancla-mascotas" data-toggle="tab">MASCOTAS</a></li>
+                            <li><a href="#ancla-articulos" data-toggle="tab">ARTICULOS</a></li>
                         </ul>
                         <div class="tab-content">
                     <!--

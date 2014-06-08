@@ -2,7 +2,7 @@
     <div class="form-listados-cliente">
     <form action="" name="listados-cliente" class="" method="post">
         <fieldset name="cliente_legend">
-            <legend>CLIENTES</legend>
+            <legend>CLIENTES</legend><a name="ancla-clientes"></a>
             <div class="row">
                 <div class="form-group col-md-12 col-xs-12">
                     <label for="falta_cliente">ALTA CLIENTE: </label>

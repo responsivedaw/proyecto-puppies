@@ -200,7 +200,7 @@
                 <button type="submit" name="buscar_mascotas" class="btn btn-primary"><i class="fa fa-search fa-lg"></i>&nbsp; BUSCAR</button>
             </div>
         </fieldset>
-    </form>
+    </form><a name="ancla-mascotas"></a>
     <div class="clearfix"></div>
     </div>
 </div>
