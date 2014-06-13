@@ -38,7 +38,7 @@
                             <h3>ALMACÉN</h3>
                         </div>
                         <div class="col-md-2 col-md-offset-2 col-xs-3 col-xs-offset-2 home-btn disabled">
-                            <a href="./facturacion.php"><img src="./images/facturacion512.png" alt="facturacion512.png" title="FACTURACIÓN" /></a>
+                            <a href="./images/prototipos/facturacion.jpg" target="_blank"><img src="./images/facturacion512.png" alt="facturacion512.png" title="FACTURACIÓN" /></a>
                             <h3>FACTURACIÓN</h3>
                         </div>
                         <div class="col-md-2 col-md-offset-1 col-xs-3 col-xs-offset-2 home-btn">

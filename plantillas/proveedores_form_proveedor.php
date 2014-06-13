@@ -7,7 +7,7 @@
         </div>
         <div class="form-group col-md-2 col-xs-2">
             <label for="nif_proveedor">CIF:</label>
-            <input type="text" name="nif_proveedor" id="nif_proveedor" maxlength="10" class="form-control" placeholder="A12345678" value="<?php if(isset($datos['nif_proveedor'])) echo $datos['nif_proveedor']; ?>" data-validation="custom" data-validation-regexp="^\[A-Z]d{8}$" data-validation-error-msg="Introduzca un CIF correcto."/>
+            <input type="text" name="nif_proveedor" id="nif_proveedor" maxlength="10" class="form-control" placeholder="A12345678" value="<?php if(isset($datos['nif_proveedor'])) echo $datos['nif_proveedor']; ?>" data-validation="custom" data-validation-regexp="^[A-Z]\d{8}$" data-validation-error-msg="Introduzca un CIF correcto."/>
         </div>
         <div class="form-group col-md-8 col-xs-12">
             <label for="nombre_proveedor">Nombre:</label>

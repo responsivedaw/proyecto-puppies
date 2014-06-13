@@ -1,8 +1,7 @@
-<div class="tab-pane active" id="anclaArticulos">
+<div class="tab-pane active">
 	<div class="form-listados-articulo">
-	<form action="" name="listados-articulo" class="" method="post">
+	<form action="" name="listados-articulo" id="listados-articulo" class="" method="post">
 		<fieldset name="articulo_legend">
-			<legend>ARTICULOS</legend><a name="ancla-articulos"></a>
 			<div class="row">
 				<div class="form-group col-md-5 col-xs-8">
 					<label for="nombre">Categoría:</label>

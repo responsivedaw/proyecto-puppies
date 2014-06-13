@@ -12,7 +12,7 @@
         <th>Cliente</th>
         <th>F.Alta</th>
     </tr>
-    <?php foreach ($resultados as mascota): ?>
+    <?php foreach ($resultados as $mascota): ?>
     <tr>
         <td><?php echo $mascota['id_mascota']; ?></td>
         <td><?php echo $mascota['nombre_mascota']; ?></td>
@@ -28,8 +28,8 @@
 </table>
 <div class="center-block">
     <p class="center-block">
-        <a href="./mascotas.php?imprimir=true&id_mascota=<?php echo $mascota['id_mascota']; ?>" title="IMPRIMIR" class="btn btn-success"><i class="fa fa-print fa-lg"></i>&nbsp;IMPRIMIR</a>
-        <a href="./mascotas.php?exportar=true&id_mascota=<?php echo $mascota['id_mascota']; ?>" title="EXPORTAR" class="btn btn-success"><i class="fa fa-save fa-lg"></i>&nbsp;EXPORTAR</a>
+        <a href="./mascotas.php?imprimir=true&id_mascota=<?php echo $mascota['id_mascota']; ?>" title="IMPRIMIR" class="btn btn-success" disabled="disabled"><i class="fa fa-print fa-lg"></i>&nbsp;IMPRIMIR</a>
+        <a href="./mascotas.php?exportar=true&id_mascota=<?php echo $mascota['id_mascota']; ?>" title="EXPORTAR" class="btn btn-success" disabled="disabled"><i class="fa fa-save fa-lg"></i>&nbsp;EXPORTAR</a>
         <a href="./listados.php" title="VOLVER" class="btn btn-primary"><i class="fa fa-undo fa-lg"></i> VOLVER</a>
     </p>
 </div>

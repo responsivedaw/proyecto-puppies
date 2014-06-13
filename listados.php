@@ -11,9 +11,11 @@
     <script type="text/javascript" src="./js/jquery.js"></script>
     <script type="text/javascript" src="./js/jquery-ui.js"></script>
     <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+		
     <!-- PROPIOS -->
     <link rel="stylesheet" type="text/css" href="./css/estilos.css" />      
     <script type="text/javascript" src="./js/footer.js"></script>
+	<script type="text/javascript" src="./js/listados.js"></script>
     <!--PHP-->
     <?php require_once "./includes/functions.php"; ?>
     <?php require_once "./includes/database_functions.php"; ?>
@@ -30,49 +32,28 @@
                     <h1 class="img-title">LISTADOS</h1>
                 </div>
                 <div class="col-md-10">
-                    <div class="tabbable">
-                        <ul class="nav nav-tabs" id="myTab">
-                            <li class="active"><a href="#ancla-clientes" data-toggle="tab">CLIENTES</a></li>
-                            <li><a href="#ancla-mascotas" data-toggle="tab">MASCOTAS</a></li>
-                            <li><a href="#ancla-articulos" data-toggle="tab">ARTICULOS</a></li>
-                        </ul>
-                        <div class="tab-content">
-                    <!--
-                    <div class="anclas">
-                        <a href="#anclaClientes">CLIENTES</a>
-                        <a href="#anclaMascotas">MASCOTAS</a>
-                        <a href="#anclaArticulos">ARTICULOS</a>
-                    </div>
-                    -->
                     <?php
                     if (isset($_SESSION['id_usuario'])){
                         if (!$_POST){
-                            ?><div class="listados-content"><?php
+                            ?>
+					<div class="tabbable">
+						<ul class="nav nav-tabs" id="myTab">
+							<li><a href="#" id="anclaClientes">CLIENTES</a></li>
+							<li><a href="#" id="anclaMascotas">MASCOTAS</a></li>
+							<li><a href="#" id="anclaArticulos">ARTICULOS</a></li>
+						</ul>
+                        <div class="tab-content">
+							<div class="listados-content"><?php
                                 include "./plantillas/listados_form_cliente.php";
-                            ?></div>
-                            <div class="listados-content"><?php
                                 include "./plantillas/listados_form_mascota.php";
-                            ?></div>
-                            <div class="listados-content"><?php
                                 $proveedores=Proveedor::get_proveedores();
                                 $categorias=Categoria::get_categorias();
                                 include "./plantillas/listados_form_articulo.php";
                             ?></div>
                         </div>
-                        <!--
-                        <script>
-                            $(function () {
-                              $('#myTab a:last').tab('show');
-                            })
-                          </script> -->
                     </div><?php
                         } elseif (isset($_POST['buscar_clientes'])){
                             $resultados=Listado::clientes($_POST);
-                            echo "POST:<br>";
-                            var_dump($_POST);
-                            echo "<hr>RESULTADO:<br>";
-                            var_dump($resultados);
-                            
                             if (count($resultados)!=0){
                                 include "./plantillas/listados_clientes_listado.php";
                             } else {

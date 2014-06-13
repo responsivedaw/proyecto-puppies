@@ -22,8 +22,8 @@
 </table>
 <div class="center-block">
     <p class="center-block">
-        <a href="./articulos.php?imprimir=true&id_articulo=<?php echo $articulo['id_articulo']; ?>" title="IMPRIMIR" class="btn btn-success"><i class="fa fa-print fa-lg"></i>&nbsp;IMPRIMIR</a>
-        <a href="./articulos.php?exportar=true&id_articulo=<?php echo $articulo['id_articulo']; ?>" title="EXPORTAR" class="btn btn-success"><i class="fa fa-save fa-lg"></i>&nbsp;EXPORTAR</a>
+        <a href="./articulos.php?imprimir=true&id_articulo=<?php echo $articulo['id_articulo']; ?>" title="IMPRIMIR" class="btn btn-success" disabled="disabled"><i class="fa fa-print fa-lg"></i>&nbsp;IMPRIMIR</a>
+        <a href="./articulos.php?exportar=true&id_articulo=<?php echo $articulo['id_articulo']; ?>" title="EXPORTAR" class="btn btn-success" disabled="disabled"><i class="fa fa-save fa-lg"></i>&nbsp;EXPORTAR</a>
         <a href="./listados.php" title="VOLVER" class="btn btn-primary"><i class="fa fa-undo fa-lg"></i> VOLVER</a>
     </p>
 </div>

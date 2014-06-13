@@ -1,8 +1,7 @@
-<div class="tab-pane active" id="anclaClientes">
+<div class="tab-pane active">
     <div class="form-listados-cliente">
-    <form action="" name="listados-cliente" class="" method="post">
+    <form action="" name="listados-cliente" id="listados-cliente" class="" method="post">
         <fieldset name="cliente_legend">
-            <legend>CLIENTES</legend><a name="ancla-clientes"></a>
             <div class="row">
                 <div class="form-group col-md-12 col-xs-12">
                     <label for="falta_cliente">ALTA CLIENTE: </label>
@@ -44,15 +43,15 @@
             <div class="row">
                 <div class="form-group col-md-3 col-xs-6">
                     <label for="cpostal_cliente">CODIGO POSTAL: </label>
-                    <input type="text" name="cpostal_cliente" id="cpostal_cliente" class="form-control" placeholder="28002" />
+                    <input type="text" name="cpostal_cliente" id="cpostal_cliente" class="form-control" placeholder="28002" readonly="readonly"/>
                 </div>
                 <div class="form-group col-md-5 col-xs-6">
                     <label for="nombre_localidad">LOCALIDAD: </label>
-                    <input type="text" name="nombre_localidad" id="nombre_localidad" class="form-control" placeholder="Alcorcón" />
+                    <input type="text" name="nombre_localidad" id="nombre_localidad" class="form-control" placeholder="Alcorcón" readonly="readonly"/>
                 </div>
                 <div class="form-group col-md-4 col-xs-6">
                     <label for="provincia_localidad">PROVINCIA:</label>
-                    <input type="text" name="provincia_localidad" id="provincia_localidad" class="form-control" placeholder="Madrid"/>
+                    <input type="text" name="provincia_localidad" id="provincia_localidad" class="form-control" placeholder="Madrid" readonly="readonly"/>
                 </div>
             </div>
              <div class="line-break"></div>
@@ -63,7 +62,7 @@
                         <div class="col-md-3 col-xs-3">
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <input type="radio" id="fnac_cliente_18" value="18" name="fnac_cliente" <?php echo (isset($cliente['fnac_cliente']) && $cliente['fnac_cliente']=='18')?'checked':''; ?> /> 
+                                    <input type="radio" id="fnac_cliente_18" value="18" name="fnac_cliente" <?php echo (isset($cliente['fnac_cliente']) && $cliente['fnac_cliente']=='18')?'checked':''; ?> readonly="readonly"/> 
                                 </span>
                                 <div class="form-control">
                                     <label for="<18">&lt;18</label>
@@ -73,7 +72,7 @@
                         <div class="col-md-4 col-xs-4">
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <input type="radio" id="fnac_cliente_1865" value="1865" name="fnac_cliente" />
+                                    <input type="radio" id="fnac_cliente_1865" value="1865" name="fnac_cliente" readonly="readonly"/>
                                 </span>
                                 <div class="form-control">
                                     <label for="18-65">18-65</label>
@@ -83,7 +82,7 @@
                         <div class="col-md-3 col-xs-3">
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <input type="radio" id="fnac_cliente_65" value="65" name="fnac_cliente" />
+                                    <input type="radio" id="fnac_cliente_65" value="65" name="fnac_cliente" readonly="readonly"/>
                                 </span>
                                 <div class="form-control">
                                     <label for="65">&gt;65</label>
@@ -186,7 +185,7 @@
                              <div class="col-md-4 col-xs-4">
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <input type="radio" id="email_cliente_no" value="no" name="email_cliente" /> 
+                                    <input type="radio" id="email_cliente_no" value="no" name="email_cliente" readonly="readonly"/> 
                                 </span>
                                 <div class="form-control">
                                     <label for="email_cliente_no">No</label>

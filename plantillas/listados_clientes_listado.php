@@ -28,8 +28,8 @@
 </table>
 <div class="center-block">
     <p class="center-block">
-        <a href="./clientes.php?imprimir=true&id_cliente=<?php echo $cliente['id_cliente']; ?>" title="IMPRIMIR" class="btn btn-success"><i class="fa fa-print fa-lg"></i>&nbsp;IMPRIMIR</a>
-        <a href="./clientes.php?exportar=true&id_cliente=<?php echo $cliente['id_cliente']; ?>" title="EXPORTAR" class="btn btn-success"><i class="fa fa-save fa-lg"></i>&nbsp;EXPORTAR</a>
+        <a href="./clientes.php?imprimir=true&id_cliente=<?php echo $cliente['id_cliente']; ?>" title="IMPRIMIR" class="btn btn-success" disabled="disabled"><i class="fa fa-print fa-lg"></i>&nbsp;IMPRIMIR</a>
+        <a href="./clientes.php?exportar=true&id_cliente=<?php echo $cliente['id_cliente']; ?>" title="EXPORTAR" class="btn btn-success" disabled="disabled"><i class="fa fa-save fa-lg"></i>&nbsp;EXPORTAR</a>
         <a href="./listados.php" title="VOLVER" class="btn btn-primary"><i class="fa fa-undo fa-lg"></i> VOLVER</a>
     </p>
 </div>

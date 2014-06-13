@@ -41,5 +41,21 @@
     function validar_web($web){
         $patron_web="/^http:\/\/www\.([\da-zñáéíóú]+).([a-z]+)$/";		
         return preg_match($patron_web,$web);
+    } 
+    function validar_precio($precio){
+       $patron_precio="/^[0-9]+([,\.][0-9]*)?$/";	
+       return preg_match($patron_precio,$precio);
+    }
+    function validar_entero($numero){
+       $patron_entero="/^[0-9]+$/";	
+       return preg_match($patron_entero,$numero);
+    }
+    function validar_nombre_proveedor($nombre){
+       $patron_nombre_proveedor="/^[\da-zñáéíóú]+(\s[\da-zñáéíóúü]+)*,?\sS\.[ALC]\.([AL]\.)?$/";
+       return preg_match($patron_nombre_proveedor,$nombre);
+    }
+    function validar_cif($cif){
+       $patron_cif="/^[A-Z]\d{8}$/i";
+       return preg_match($patron_cif,$cif);
     }
 ?>
