@@ -1,5 +1,11 @@
 proyecto-puppies
 ================
 Proyecto Puppies DAW
+Aplicacion de gestion de una guarderia o peluqueria canina.
 
-Y ahora sigo 21.27
+Tecnologias usadas:
+- PHP
+- HTML
+- CSS + Bootstrap
+- Javascript + jQuery + librerias jQuery + jQuery UI
+- MySQL
